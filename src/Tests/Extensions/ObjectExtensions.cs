@@ -4,10 +4,16 @@ namespace Tests.Extensions
 {
     public static class ObjectExtensions
     {
-        public static T ShouldBeInstanceOf<T>(this object target)
+        public static T ShouldBeInstanceOf<T>(this object actual)
         {
-            Assert.IsInstanceOfType(typeof(T), target);
-            return (T) target;
+            Assert.IsInstanceOf(typeof(T), actual);
+            return (T) actual;
+        }
+
+        public static T ShouldBeEqualTo<T>(this T actual, T expected)
+        {
+            Assert.AreEqual(expected, actual);
+            return actual;
         }
     }
 }

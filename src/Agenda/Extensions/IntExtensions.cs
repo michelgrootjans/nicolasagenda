@@ -8,5 +8,10 @@ namespace Agenda.Extensions
         {
             return new DateTime(year, 9, day);
         }
+
+        public static DateTime Oktober(this int day, int year)
+        {
+            return new DateTime(year, 10, day);
+        }
     }
 }

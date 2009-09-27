@@ -1,6 +1,6 @@
 using System;
 using Agenda.Presentation;
-using Agenda.Services;
+using Agenda.Service;
 using NUnit.Framework;
 using Rhino.Mocks;
 using Tests.Extensions;
@@ -11,10 +11,12 @@ namespace Tests.Presentation
     public class WindowManagerTest : InstanceContextSpecification<IWindowManager>
     {
         protected IScheduleService scheduleService;
+        protected DateTime date;
 
         protected override void Arrange()
         {
             scheduleService = Dependency<IScheduleService>();
+            date = DateTime.Now;
         }
 
         protected override IWindowManager CreateSystemUnderTest()
@@ -28,7 +30,7 @@ namespace Tests.Presentation
         protected override void Arrange()
         {
             base.Arrange();
-            When(scheduleService).IsToldTo(s => s.LessonIsOngoing).Return(true);
+            When(scheduleService).IsToldTo(s => s.SchoolIsOngoingOn(date)).Return(true);
         }
 
         [Test]
@@ -43,7 +45,7 @@ namespace Tests.Presentation
         protected override void Arrange()
         {
             base.Arrange();
-            scheduleService.Stub(s => s.LessonIsOngoing).Return(false);
+            scheduleService.Stub(s => s.SchoolIsOngoingOn(date)).Return(false);
         }
 
         [Test]

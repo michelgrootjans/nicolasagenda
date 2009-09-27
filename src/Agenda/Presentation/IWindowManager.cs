@@ -1,5 +1,5 @@
 using System;
-using Agenda.Services;
+using Agenda.Service;
 
 namespace Agenda.Presentation
 {
@@ -19,7 +19,7 @@ namespace Agenda.Presentation
 
         public IView GetViewAt(DateTime date)
         {
-            if (scheduleService.LessonIsOngoing)
+            if (scheduleService.SchoolIsOngoingOn(DateTime.Now))
                 return new SchoolView();
             return new HomeView();
         }
