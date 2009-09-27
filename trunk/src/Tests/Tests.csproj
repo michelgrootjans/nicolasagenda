@@ -54,7 +54,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\BoolExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Service\ScheduleServiceTests.cs" />
     <Compile Include="TestUtilities\IMethodExpectation.cs" />
     <Compile Include="TestUtilities\InstanceContextSpecification.cs" />
     <Compile Include="TestUtilities\IMockExpectation.cs" />
