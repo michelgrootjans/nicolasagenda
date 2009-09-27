@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
+using Agenda.Presentation;
 
 namespace Agenda
 {
@@ -12,5 +9,18 @@ namespace Agenda
     /// </summary>
     public partial class App : Application
     {
+        private static IWindowManager windowManager;
+
+        public App()
+        {
+            windowManager = ApplicationStartup.Run();
+            Startup += OpenStartupWindow;
+        }
+
+        private static void OpenStartupWindow(object sender, StartupEventArgs e)
+        {
+            var mainWindow = windowManager.GetViewAt(DateTime.Now);
+            mainWindow.Show();
+        }
     }
 }
