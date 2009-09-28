@@ -74,6 +74,9 @@
       <DependentUpon>SchoolView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\IWindowManager.cs" />
+    <Compile Include="Presentation\Vak.xaml.cs">
+      <DependentUpon>Vak.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -87,10 +90,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Service\Friday.cs" />
     <Compile Include="Service\ISchedule.cs" />
     <Compile Include="Service\IScheduleService.cs" />
     <Compile Include="Service\Monday.cs" />
+    <Compile Include="Service\Thursday.cs" />
     <Compile Include="Service\Tuesday.cs" />
+    <Compile Include="Service\Wednesday.cs" />
     <Compile Include="Service\WeekDay.cs" />
     <Compile Include="Service\WeekendDay.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -110,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Presentation\SchoolView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentation\Vak.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

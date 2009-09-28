@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Agenda.Presentation.Vak"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="50" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Rectangle Height="40" Width="60" Grid.Column="0" Name="vakNaam" Fill="LightGray" RadiusX="10" RadiusY="10">
+            <Rectangle.BitmapEffect>
+                <DropShadowBitmapEffect />
+            </Rectangle.BitmapEffect>
+        </Rectangle>
+        <RichTextBox Grid.Column="2" Name="lesInhoud" BorderThickness="10" />
+    </Grid>
+</UserControl>
