@@ -30,7 +30,7 @@ namespace Tests.Presentation
         protected override void Arrange()
         {
             base.Arrange();
-            When(scheduleService).IsToldTo(s => s.SchoolIsOngoingOn(date)).Return(true);
+            When(scheduleService).IsToldTo(s => s.SchoolIsOngoingOn(Arg<DateTime>.Is.Anything)).Return(true);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace Tests.Presentation
         protected override void Arrange()
         {
             base.Arrange();
-            scheduleService.Stub(s => s.SchoolIsOngoingOn(date)).Return(false);
+            scheduleService.Stub(s => s.SchoolIsOngoingOn(Arg<DateTime>.Is.Anything)).Return(false);
         }
 
         [Test]
