@@ -12,7 +12,7 @@ namespace Agenda.Presentation
     internal class SchoolAgendaPresenter : ISchoolAgendaPresenter
     {
         private readonly ISchoolAgendaView view;
-        private readonly IScheduleService service;
+        private readonly IScheduleService scheduleService;
         private readonly IAgendaService agendaService;
         private readonly DateTime date;
 
@@ -21,23 +21,31 @@ namespace Agenda.Presentation
             view = schoolAgendaView;
             this.agendaService = agendaService;
             this.date = date;
-            service = scheduleService;
+            this.scheduleService = scheduleService;
+            view.SaveChanges += SaveChanges;
             InitializeView();
         }
 
         private void InitializeView()
         {
             var daysContent = agendaService.GetContentFor(date);
-            for (var hour = 1; hour <= 7; hour++)
+            for (var hour = 0; hour < 7; hour++)
             {
-                var courseName = service.CourseAt(date, hour);
+                var courseName = scheduleService.CourseAt(date, hour);
                 if (courseName.IsNotNullOrEmty())
                 {
-                    var courseControl = view.GetCourse(hour);
-                    courseControl.CourseName = courseName;
-                    courseControl.CourseContent = daysContent[hour].CourseContent;
+                    var courseControl = view.Courses[hour];
+                    var content = daysContent[hour];
+                    courseControl.Uur = content.Uur;
+                    courseControl.Vak = courseName;
+                    courseControl.Inhoud = content.Inhoud;
                 }
             }
+        }
+
+        private void SaveChanges(object sender, EventArgs e)
+        {
+            agendaService.Save(view.Courses, date);
         }
 
         public IView View

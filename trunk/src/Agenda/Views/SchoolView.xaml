@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Presentation="clr-namespace:Agenda.Views"
-    Title="SchoolView" Height="398.75" Width="534">
+    Title="SchoolView" Height="398.75" Width="534"
+        Closed="Window_Closed">
     <StackPanel Name="vakken">
         <Presentation:VakControl x:Name="vak1" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak2" Visibility="Hidden" />

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Agenda.Extensions;
 using Agenda.Presentation;
@@ -12,7 +13,13 @@ namespace Agenda.Views
             InitializeComponent();
         }
 
-        public string CourseName
+        public int Uur
+        {
+            get { return (int) vakUur.Content; }
+            set { vakUur.Content = value; }
+        }
+
+        public string Vak
         {
             get { return vakNaam.Content as string; }
             set
@@ -24,7 +31,7 @@ namespace Agenda.Views
             }
         }
 
-        public string CourseContent
+        public string Inhoud
         {
             get { return lesInhoud.Text; }
             set { lesInhoud.Text = value; }

@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using Agenda.Extensions;
 using Agenda.Presentation;
 
 namespace Agenda.Views
 {
-    /// <summary>
-    /// Interaction logic for SchoolView.xaml
-    /// </summary>
     public partial class SchoolView : Window, ISchoolAgendaView
     {
-        private IDictionary<int, VakControl> courses;
+        public event EventHandler SaveChanges;
+        public IList<ICourse> Courses { get; private set; }
 
         public SchoolView()
         {
@@ -20,29 +19,13 @@ namespace Agenda.Views
 
         private void InitializeCourses()
         {
-            courses = new Dictionary<int, VakControl>
-                          {
-                              {1, vak1},
-                              {2, vak2},
-                              {3, vak3},
-                              {4, vak4},
-                              {5, vak5},
-                              {6, vak6},
-                              {7, vak7}
-                          };
+            Courses = new List<ICourse> {vak1, vak2, vak3, vak4, vak5, vak6, vak7};
         }
 
-        //public void SetCourse(int hour, string courseName, string courseContent)
-        //{
-        //    var c = courses[hour];
-        //    c.Visibility = Visibility.Visible;
-        //    c.CourseName = courseName;
-        //    c.CourseContent = courseContent;
-        //}
 
-        public ICourse GetCourse(int hour)
+        private void Window_Closed(object sender, EventArgs e)
         {
-            return courses[hour];
+            SaveChanges.Raise(this, EventArgs.Empty);
         }
     }
 }
