@@ -66,16 +66,24 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
-    <Compile Include="Presentation\HomeView.xaml.cs">
+    <Compile Include="Presentation\AgendaPresenter.cs" />
+    <Compile Include="Presentation\ICourse.cs" />
+    <Compile Include="Presentation\IHomeAgendaPresenter.cs" />
+    <Compile Include="Presentation\IPresenter.cs" />
+    <Compile Include="Presentation\ISchoolAgendaPresenter.cs" />
+    <Compile Include="Presentation\ISchoolAgendaView.cs" />
+    <Compile Include="Presentation\PresenterFactory.cs" />
+    <Compile Include="Service\IAgendaService.cs" />
+    <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\IView.cs" />
-    <Compile Include="Presentation\SchoolView.xaml.cs">
+    <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\SchoolView.xaml.cs">
       <DependentUpon>SchoolView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\IWindowManager.cs" />
-    <Compile Include="Presentation\Vak.xaml.cs">
-      <DependentUpon>Vak.xaml</DependentUpon>
+    <Compile Include="Views\IWindowManager.cs" />
+    <Compile Include="Views\VakControl.xaml.cs">
+      <DependentUpon>VakControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -90,15 +98,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Service\Friday.cs" />
+    <Compile Include="Service\Schedule\Friday.cs" />
     <Compile Include="Service\ISchedule.cs" />
     <Compile Include="Service\IScheduleService.cs" />
-    <Compile Include="Service\Monday.cs" />
-    <Compile Include="Service\Thursday.cs" />
-    <Compile Include="Service\Tuesday.cs" />
-    <Compile Include="Service\Wednesday.cs" />
-    <Compile Include="Service\WeekDay.cs" />
-    <Compile Include="Service\WeekendDay.cs" />
+    <Compile Include="Service\Schedule\Monday.cs" />
+    <Compile Include="Service\Schedule\Thursday.cs" />
+    <Compile Include="Service\Schedule\Tuesday.cs" />
+    <Compile Include="Service\Schedule\Wednesday.cs" />
+    <Compile Include="Service\Schedule\WeekDay.cs" />
+    <Compile Include="Service\Schedule\WeekendDay.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -111,15 +119,15 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Presentation\HomeView.xaml">
+    <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\SchoolView.xaml">
+    <Page Include="Views\SchoolView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Presentation\Vak.xaml">
+    <Page Include="Views\VakControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
