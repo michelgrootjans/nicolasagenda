@@ -1,12 +1,9 @@
-﻿using System;
-using System.Windows;
-using Agenda.Presentation;
+﻿using System.Windows;
+using Agenda.Extensions;
+using Agenda.Views;
 
 namespace Agenda
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private static IWindowManager windowManager;
@@ -19,8 +16,7 @@ namespace Agenda
 
         private static void OpenStartupWindow(object sender, StartupEventArgs e)
         {
-            var mainWindow = windowManager.GetViewAt(DateTime.Now);
-            mainWindow.Show();
+            windowManager.GetViewAt(1.Oktober(2009).At(9, 00)).Show();
         }
     }
 }

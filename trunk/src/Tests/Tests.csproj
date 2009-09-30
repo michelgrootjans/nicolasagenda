@@ -61,7 +61,6 @@
     <Compile Include="TestUtilities\InstanceContextSpecification.cs" />
     <Compile Include="TestUtilities\IMockExpectation.cs" />
     <Compile Include="TestUtilities\StaticContextSpecification.cs" />
-    <Compile Include="Presentation\WindowManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presentation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

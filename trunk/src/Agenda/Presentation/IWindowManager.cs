@@ -1,29 +1,25 @@
 using System;
-using Agenda.Service;
-using Agenda.Extensions;
+using Agenda.Presentation;
 
-namespace Agenda.Presentation
+namespace Agenda.Views
 {
     public interface IWindowManager
     {
-        IView GetViewAt(DateTime time);
+        IView GetViewAt(DateTime dateTime);
     }
 
     public class WindowManager : IWindowManager
     {
-        private readonly IScheduleService scheduleService;
+        private readonly IAgendaPresenter agendaPresenter;
 
-        public WindowManager(IScheduleService scheduleService)
+        public WindowManager(IAgendaPresenter agendaPresenter)
         {
-            this.scheduleService = scheduleService;
+            this.agendaPresenter = agendaPresenter;
         }
 
         public IView GetViewAt(DateTime date)
         {
-            var now = 30.September(2009).At(9, 00);
-            if (scheduleService.SchoolIsOngoingOn(now))
-                return new SchoolView(scheduleService, now);
-            return new HomeView();
+            return agendaPresenter.GetViewAt(date);
         }
     }
 }

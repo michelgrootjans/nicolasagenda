@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Agenda.Presentation
+namespace Agenda.Views
 {
     /// <summary>
     /// Interaction logic for HomeView.xaml

@@ -1,4 +1,4 @@
-namespace Agenda.Presentation
+namespace Agenda.Views
 {
     public interface IView
     {

@@ -1,49 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using Agenda.Extensions;
-using Agenda.Service;
+using Agenda.Presentation;
 
-namespace Agenda.Presentation
+namespace Agenda.Views
 {
     /// <summary>
     /// Interaction logic for SchoolView.xaml
     /// </summary>
-    public partial class SchoolView : Window, IView
+    public partial class SchoolView : Window, ISchoolAgendaView
     {
-        private readonly IScheduleService service;
-        private readonly DateTime date;
+        private IDictionary<int, VakControl> courses;
 
         public SchoolView()
         {
             InitializeComponent();
+            InitializeCourses();
         }
 
-        public SchoolView(IScheduleService service, DateTime date) : this()
+        private void InitializeCourses()
         {
-            this.service = service;
-            this.date = date;
-            InitializeDay();
+            courses = new Dictionary<int, VakControl>
+                          {
+                              {1, vak1},
+                              {2, vak2},
+                              {3, vak3},
+                              {4, vak4},
+                              {5, vak5},
+                              {6, vak6},
+                              {7, vak7}
+                          };
         }
 
-        private void InitializeDay()
-        {
-            foreach(var course in service.CoursesFor(date))
-                AddToView(course);
-        }
+        //public void SetCourse(int hour, string courseName, string courseContent)
+        //{
+        //    var c = courses[hour];
+        //    c.Visibility = Visibility.Visible;
+        //    c.CourseName = courseName;
+        //    c.CourseContent = courseContent;
+        //}
 
-        private void AddToView(string course)
+        public ICourse GetCourse(int hour)
         {
-            var vak = new Vak(course);
-            vakken.Children.Add(vak);
-        }
-
-        private void FillControl(ContentControl button, int hour)
-        {
-            var content = service.CourseAt(date, hour);
-            if (content.IsNullOrEmty())
-                button.Visibility = Visibility.Hidden;
-            else button.Content = content;
+            return courses[hour];
         }
     }
 }
