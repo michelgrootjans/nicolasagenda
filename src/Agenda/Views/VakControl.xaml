@@ -12,6 +12,7 @@
             </Rectangle.BitmapEffect>
         </Rectangle>
         <TextBox Grid.Column="2" Name="lesInhoud" BorderThickness="1" MinWidth="200" />
-        <Label Grid.Column="0" Name="vakNaam" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14"></Label>
+        <Label Grid.Column="0" Name="vakNaam" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+        <Label Grid.Column="0" Name="vakUur" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" Margin="4" />
     </Grid>
 </UserControl>

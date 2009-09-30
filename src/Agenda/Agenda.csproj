@@ -37,6 +37,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.XML" />
     <Reference Include="UIAutomationProvider">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -63,6 +64,7 @@
   <ItemGroup>
     <Compile Include="ApplicationStartup.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
+    <Compile Include="Extensions\EventHandlerExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Presentation\ISchoolAgendaPresenter.cs" />
     <Compile Include="Presentation\ISchoolAgendaView.cs" />
     <Compile Include="Presentation\PresenterFactory.cs" />
+    <Compile Include="Service\Course.cs" />
     <Compile Include="Service\IAgendaService.cs" />
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
