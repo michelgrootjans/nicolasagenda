@@ -5,12 +5,12 @@
     Title="SchoolView" Height="398.75" Width="534"
         Closed="Window_Closed">
     <StackPanel Name="vakken">
+        <Presentation:VakControl x:Name="vak0" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak1" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak2" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak3" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak4" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak5" Visibility="Hidden" />
         <Presentation:VakControl x:Name="vak6" Visibility="Hidden" />
-        <Presentation:VakControl x:Name="vak7" Visibility="Hidden" />
     </StackPanel>
 </Window>

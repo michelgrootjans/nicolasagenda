@@ -5,13 +5,13 @@ namespace Agenda.Service
         // Ma: SOAC, FRA, BIO, FRA, PO, PO, NED
         public Monday()
         {
-            courses.Add(1, "SOAC");
-            courses.Add(2, "FRA");
-            courses.Add(3, "BIO");
-            courses.Add(4, "FRA");
+            courses.Add(0, "SOAC");
+            courses.Add(1, "FRA");
+            courses.Add(2, "BIO");
+            courses.Add(3, "FRA");
+            courses.Add(4, "PO");
             courses.Add(5, "PO");
-            courses.Add(6, "PO");
-            courses.Add(7, "NED");
+            courses.Add(6, "NED");
         }
     }
 }

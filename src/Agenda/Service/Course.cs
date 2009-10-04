@@ -1,7 +1,9 @@
+using System;
 using Agenda.Presentation;
 
 namespace Agenda.Service
 {
+    [Serializable]
     public class Course : ICourse
     {
         public int Uur { get; set; }

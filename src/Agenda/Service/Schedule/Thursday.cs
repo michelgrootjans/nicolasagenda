@@ -5,13 +5,13 @@ namespace Agenda.Service
     {
         public Thursday()
         {
-            courses.Add(1, "FRA");
-            courses.Add(2, "WIS");
-            courses.Add(3, "MO");
-            courses.Add(4, "WIS");
-            courses.Add(5, "FRA");
-            courses.Add(6, "NED");
-            courses.Add(7, "LO");
+            courses.Add(0, "FRA");
+            courses.Add(1, "WIS");
+            courses.Add(2, "MO");
+            courses.Add(3, "WIS");
+            courses.Add(4, "FRA");
+            courses.Add(5, "NED");
+            courses.Add(6, "LO");
         }
     }
 }

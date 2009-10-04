@@ -32,7 +32,7 @@ namespace Agenda.Presentation
             for (var hour = 0; hour < 7; hour++)
             {
                 var courseName = scheduleService.CourseAt(date, hour);
-                if (courseName.IsNotNullOrEmty())
+                if (courseName.IsNotNullOrEmpty())
                 {
                     var courseControl = view.Courses[hour];
                     var content = daysContent[hour];
