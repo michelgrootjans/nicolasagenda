@@ -15,5 +15,10 @@ namespace Tests.Extensions
             Assert.AreEqual(expected, actual);
             return actual;
         }
+
+        public static void ShouldBeNull(this object actual)
+        {
+            Assert.IsNull(actual);
+        }
     }
 }

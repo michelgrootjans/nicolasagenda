@@ -23,7 +23,7 @@ namespace Agenda.Service
 
         public bool SchoolIsOngoingOn(DateTime date)
         {
-            return schedule.CourseAt(date).IsNotNullOrEmty();
+            return schedule.CourseAt(date).IsNotNullOrEmpty();
         }
 
         public string CurrentCourseAt(DateTime date)

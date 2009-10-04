@@ -19,7 +19,7 @@ namespace Agenda.Views
 
         private void InitializeCourses()
         {
-            Courses = new List<ICourse> {vak1, vak2, vak3, vak4, vak5, vak6, vak7};
+            Courses = new List<ICourse> {vak0, vak1, vak2, vak3, vak4, vak5, vak6};
         }
 
 

@@ -25,7 +25,7 @@ namespace Agenda.Views
             set
             {
                 vakNaam.Content = value;
-                Visibility = value.IsNullOrEmty() 
+                Visibility = value.IsNullOrEmpty() 
                     ? Visibility.Hidden 
                     : Visibility.Visible;
             }

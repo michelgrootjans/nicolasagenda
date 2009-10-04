@@ -33,7 +33,7 @@ namespace Tests.Service
             sut.SchoolIsOngoingOn(vandaag.At(8, 25)).ShouldBeTrue();
             sut.CurrentCourseAt(vandaag.At(8, 25)).ShouldBeEqualTo("SOAC");
             sut.CurrentCourseAt(vandaag.At(9, 14)).ShouldBeEqualTo("SOAC");
-            sut.CourseAt(vandaag, 1).ShouldBeEqualTo("SOAC");
+            sut.CourseAt(vandaag, 0).ShouldBeEqualTo("SOAC");
         }
 
         [Test]

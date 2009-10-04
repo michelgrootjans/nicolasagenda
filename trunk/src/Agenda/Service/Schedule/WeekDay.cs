@@ -47,24 +47,22 @@ namespace Agenda.Service
         private int LesuurVoor(TimeSpan timeOfDay)
         {
             if (timeOfDay.IsMoreThanOrEqualTo(eindeVanDeDag))
-                return 0;
+                return -1;
             if (timeOfDay.IsMoreThanOrEqualTo(beginLes7))
-                return 7;
-            if (timeOfDay.IsMoreThanOrEqualTo(beginLes6))
                 return 6;
-            if (timeOfDay.IsMoreThanOrEqualTo(beginLes5))
+            if (timeOfDay.IsMoreThanOrEqualTo(beginLes6))
                 return 5;
-            if (timeOfDay.IsMoreThanOrEqualTo(beginLes4))
+            if (timeOfDay.IsMoreThanOrEqualTo(beginLes5))
                 return 4;
-            if (timeOfDay.IsMoreThanOrEqualTo(beginLes3))
+            if (timeOfDay.IsMoreThanOrEqualTo(beginLes4))
                 return 3;
-            if (timeOfDay.IsMoreThanOrEqualTo(beginLes2))
+            if (timeOfDay.IsMoreThanOrEqualTo(beginLes3))
                 return 2;
             if (timeOfDay.IsMoreThanOrEqualTo(beginLes2))
-                return 2;
-            if (timeOfDay.IsMoreThanOrEqualTo(beginLes1))
                 return 1;
-            return 0;
+            if (timeOfDay.IsMoreThanOrEqualTo(beginLes1))
+                return 0;
+            return -1;
         }
     }
 }
