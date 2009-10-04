@@ -7,6 +7,8 @@ namespace Agenda.Views
 {
     public partial class VakControl : UserControl, ICourse
     {
+        private int uur = -1;
+
         public VakControl()
         {
             InitializeComponent();
@@ -14,13 +16,12 @@ namespace Agenda.Views
 
         public int Uur
         {
-            get
+            get { return uur; }
+            set
             {
-                if (vakUur.Content.IsNull())
-                    return -1;
-                return (int) vakUur.Content;
+                uur = value;
+                vakUur.Content = uur + 1;
             }
-            set { vakUur.Content = value; }
         }
 
         public string Vak

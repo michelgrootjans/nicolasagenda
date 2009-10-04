@@ -78,9 +78,6 @@
     <Compile Include="Presentation\PresenterFactory.cs" />
     <Compile Include="Service\Course.cs" />
     <Compile Include="Service\IAgendaService.cs" />
-    <Compile Include="Views\Agenda.xaml.cs">
-      <DependentUpon>Agenda.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
@@ -105,15 +102,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Service\Schedule\Friday.cs" />
+    <Compile Include="Service\Roster\Friday.cs" />
     <Compile Include="Service\ISchedule.cs" />
     <Compile Include="Service\IScheduleService.cs" />
-    <Compile Include="Service\Schedule\Monday.cs" />
-    <Compile Include="Service\Schedule\Thursday.cs" />
-    <Compile Include="Service\Schedule\Tuesday.cs" />
-    <Compile Include="Service\Schedule\Wednesday.cs" />
-    <Compile Include="Service\Schedule\WeekDay.cs" />
-    <Compile Include="Service\Schedule\WeekendDay.cs" />
+    <Compile Include="Service\Roster\Monday.cs" />
+    <Compile Include="Service\Roster\Thursday.cs" />
+    <Compile Include="Service\Roster\Tuesday.cs" />
+    <Compile Include="Service\Roster\Wednesday.cs" />
+    <Compile Include="Service\Roster\WeekDay.cs" />
+    <Compile Include="Service\Roster\WeekendDay.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -126,10 +123,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\Agenda.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
