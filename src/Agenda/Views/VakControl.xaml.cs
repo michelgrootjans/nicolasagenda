@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using Agenda.Extensions;
 using Agenda.Presentation;
@@ -15,7 +14,12 @@ namespace Agenda.Views
 
         public int Uur
         {
-            get { return (int) vakUur.Content; }
+            get
+            {
+                if (vakUur.Content.IsNull())
+                    return -1;
+                return (int) vakUur.Content;
+            }
             set { vakUur.Content = value; }
         }
 
@@ -25,9 +29,9 @@ namespace Agenda.Views
             set
             {
                 vakNaam.Content = value;
-                Visibility = value.IsNullOrEmpty() 
-                    ? Visibility.Hidden 
-                    : Visibility.Visible;
+                Visibility = value.IsNullOrEmpty()
+                                 ? Visibility.Hidden
+                                 : Visibility.Visible;
             }
         }
 

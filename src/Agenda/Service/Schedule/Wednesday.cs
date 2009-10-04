@@ -6,10 +6,10 @@ namespace Agenda.Service
     {
         public Wednesday()
         {
-            courses.Add(1, "AAR");
-            courses.Add(2, "WIS");
-            courses.Add(3, "GOD");
-            courses.Add(4, "NED");
+            courses.Add(0, "AAR");
+            courses.Add(1, "WIS");
+            courses.Add(2, "GOD");
+            courses.Add(3, "NED");
 
         }
     }

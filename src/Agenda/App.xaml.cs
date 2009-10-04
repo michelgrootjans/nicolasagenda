@@ -16,7 +16,9 @@ namespace Agenda
 
         private static void OpenStartupWindow(object sender, StartupEventArgs e)
         {
-            windowManager.GetViewAt(1.Oktober(2009).At(9, 00)).Show();
+            windowManager.GetViewAt(7.Oktober(2009).At(9, 00)).Show();
+            var agenda = new Views.Agenda();
+            agenda.Show();
         }
     }
 }

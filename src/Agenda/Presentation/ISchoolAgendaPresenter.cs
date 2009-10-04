@@ -37,7 +37,7 @@ namespace Agenda.Presentation
                     var courseControl = view.Courses[hour];
                     var content = daysContent[hour];
                     courseControl.Uur = content.Uur;
-                    courseControl.Vak = courseName;
+                    courseControl.Vak = content.Vak ?? courseName;
                     courseControl.Inhoud = content.Inhoud;
                 }
             }
