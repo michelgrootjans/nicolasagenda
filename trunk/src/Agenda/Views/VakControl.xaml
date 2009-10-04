@@ -1,7 +1,7 @@
 ﻿<UserControl x:Class="Agenda.Views.VakControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" MinHeight="50">
-    <Grid>
+    <Grid Width="370">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70" />
             <ColumnDefinition Width="*" />

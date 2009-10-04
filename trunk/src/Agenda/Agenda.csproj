@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="ApplicationStartup.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\EventHandlerExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
@@ -77,14 +78,17 @@
     <Compile Include="Presentation\PresenterFactory.cs" />
     <Compile Include="Service\Course.cs" />
     <Compile Include="Service\IAgendaService.cs" />
+    <Compile Include="Views\Agenda.xaml.cs">
+      <DependentUpon>Agenda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IView.cs" />
+    <Compile Include="Presentation\IView.cs" />
     <Compile Include="Views\SchoolView.xaml.cs">
       <DependentUpon>SchoolView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\IWindowManager.cs" />
+    <Compile Include="Presentation\IWindowManager.cs" />
     <Compile Include="Views\VakControl.xaml.cs">
       <DependentUpon>VakControl.xaml</DependentUpon>
     </Compile>
@@ -122,6 +126,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Agenda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

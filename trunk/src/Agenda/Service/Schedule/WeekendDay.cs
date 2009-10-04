@@ -1,4 +1,4 @@
-namespace Agenda.Service
+namespace Agenda.Service.Schedule
 {
     internal class WeekendDay : WeekDay
     {

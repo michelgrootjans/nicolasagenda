@@ -22,7 +22,6 @@ namespace Agenda.Views
             Courses = new List<ICourse> {vak0, vak1, vak2, vak3, vak4, vak5, vak6};
         }
 
-
         private void Window_Closed(object sender, EventArgs e)
         {
             SaveChanges.Raise(this, EventArgs.Empty);
