@@ -1,7 +1,7 @@
-namespace Agenda.Views
+namespace Agenda.Presentation
 {
     public interface IView
     {
-        void Show();
+        void Save();
     }
 }

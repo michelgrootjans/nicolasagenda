@@ -1,6 +1,5 @@
 using Agenda.Presentation;
 using Agenda.Service;
-using Agenda.Views;
 
 namespace Agenda
 {

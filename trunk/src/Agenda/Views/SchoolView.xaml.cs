@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using Agenda.Extensions;
 using Agenda.Presentation;
 
 namespace Agenda.Views
 {
-    public partial class SchoolView : Window, ISchoolAgendaView
+    public partial class SchoolView : UserControl, ISchoolAgendaView
     {
         public event EventHandler SaveChanges;
         public IList<ICourse> Courses { get; private set; }
@@ -22,7 +23,7 @@ namespace Agenda.Views
             Courses = new List<ICourse> {vak0, vak1, vak2, vak3, vak4, vak5, vak6};
         }
 
-        private void Window_Closed(object sender, EventArgs e)
+        public void Save()
         {
             SaveChanges.Raise(this, EventArgs.Empty);
         }

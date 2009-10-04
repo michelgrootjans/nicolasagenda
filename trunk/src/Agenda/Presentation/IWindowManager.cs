@@ -1,7 +1,6 @@
 using System;
-using Agenda.Presentation;
 
-namespace Agenda.Views
+namespace Agenda.Presentation
 {
     public interface IWindowManager
     {

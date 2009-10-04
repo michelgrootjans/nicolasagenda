@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using Agenda.Presentation;
 
 namespace Agenda.Views
 {
@@ -10,6 +12,11 @@ namespace Agenda.Views
         public HomeView()
         {
             InitializeComponent();
+        }
+
+        public void Save()
+        {
+            throw new NotImplementedException();
         }
     }
 }
