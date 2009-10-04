@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Agenda.Service.Roster;
 
 namespace Agenda.Service
 {

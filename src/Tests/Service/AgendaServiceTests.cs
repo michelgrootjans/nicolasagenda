@@ -13,9 +13,20 @@ namespace Tests.Service
     [TestFixture]
     public abstract class AgendaTest : InstanceContextSpecification<IAgendaService>
     {
-        protected readonly DateTime drieOktober = 3.Oktober(2009);
+        protected readonly DateTime vijfOktober = 5.Oktober(2009);
         private const string AGENDA_DIR = "Agenda";
-        protected const string PATH = AGENDA_DIR + "\\2009_10_03";
+        protected const string PATH = AGENDA_DIR + "\\2009_10_05";
+
+        protected override void Arrange()
+        {
+            if (!Directory.Exists(AGENDA_DIR))
+            {
+                Directory.CreateDirectory(AGENDA_DIR);
+                return;
+            }
+            foreach(var file in Directory.GetFiles(AGENDA_DIR))
+                File.Delete(file);
+        }
 
         protected override IAgendaService CreateSystemUnderTest()
         {
@@ -23,18 +34,12 @@ namespace Tests.Service
         }
     }
 
-    public class when_day_doesnt_exist : AgendaTest
+    public class when_file_doesnt_exist : AgendaTest
     {
-        protected override void Arrange()
-        {
-            if (Directory.Exists(PATH))
-                Directory.Delete(PATH);
-        }
-
         [Test]
         public void should_get_an_empty_day()
         {
-            var agenda = sut.GetContentFor(drieOktober);
+            var agenda = sut.GetContentFor(vijfOktober);
             agenda.Count.ShouldBeEqualTo(7);
             var uur = 0;
             foreach (var course in agenda)
@@ -51,31 +56,38 @@ namespace Tests.Service
             var courses = new List<ICourse> {new Course(2, "FRA", "les geleerd")};
             File.Exists(PATH).ShouldBeFalse();
 
-            sut.Save(courses, drieOktober);
+            sut.Save(courses, vijfOktober);
 
             File.Exists(PATH).ShouldBeTrue();
         }
     }
 
-    public class when_file_exists : AgendaTest
+    public class when_file_exists_with_one_course : AgendaTest
     {
         private List<ICourse> courses;
+        private IList<ICourse> agenda;
 
         protected override void Arrange()
         {
+            base.Arrange();
             courses = new List<ICourse> {new Course(2, "FRA", "les geleerd")};
+            CreateSystemUnderTest().Save(courses, vijfOktober);
         }
 
         protected override void Act()
         {
-            sut.Save(courses, drieOktober);
+            agenda = sut.GetContentFor(vijfOktober);
         }
 
         [Test]
-        public void should_creat_a_new_day()
+        public void should_have_only_one_course()
         {
-            var agenda = sut.GetContentFor(3.Oktober(2009));
             agenda.Count.ShouldBeEqualTo(1);
+        }
+
+        [Test]
+        public void should_have_the_right_content()
+        {
             var course = agenda[0];
             course.Uur.ShouldBeEqualTo(2);
             course.Vak.ShouldBeEqualTo("FRA");

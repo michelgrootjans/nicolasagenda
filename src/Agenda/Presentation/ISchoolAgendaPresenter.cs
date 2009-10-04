@@ -16,7 +16,8 @@ namespace Agenda.Presentation
         private readonly IAgendaService agendaService;
         private readonly DateTime date;
 
-        public SchoolAgendaPresenter(ISchoolAgendaView schoolAgendaView, IScheduleService scheduleService, IAgendaService agendaService, DateTime date)
+        public SchoolAgendaPresenter(ISchoolAgendaView schoolAgendaView, IScheduleService scheduleService,
+                                     IAgendaService agendaService, DateTime date)
         {
             view = schoolAgendaView;
             this.agendaService = agendaService;
@@ -32,14 +33,14 @@ namespace Agenda.Presentation
             for (var hour = 0; hour < 7; hour++)
             {
                 var courseName = scheduleService.CourseAt(date, hour);
-                if (courseName.IsNotNullOrEmpty())
-                {
-                    var courseControl = view.Courses[hour];
-                    var content = daysContent[hour];
-                    courseControl.Uur = content.Uur;
-                    courseControl.Vak = content.Vak ?? courseName;
-                    courseControl.Inhoud = content.Inhoud;
-                }
+                if (!courseName.IsNotNullOrEmpty())
+                    continue;
+
+                var courseControl = view.Courses[hour];
+                var content = daysContent[hour];
+                courseControl.Vak = content.Vak.IsNullOrEmpty() ? courseName : content.Vak;
+                courseControl.Uur = content.Uur;
+                courseControl.Inhoud = content.Inhoud;
             }
         }
 
