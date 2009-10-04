@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Agenda.Extensions;
+using Agenda.Presentation;
 using Agenda.Views;
 
 namespace Agenda
@@ -10,13 +11,7 @@ namespace Agenda
 
         public App()
         {
-            windowManager = ApplicationStartup.Run();
-            Startup += OpenStartupWindow;
-        }
-
-        private static void OpenStartupWindow(object sender, StartupEventArgs e)
-        {
-            windowManager.GetViewAt(5.Oktober(2009).At(9, 00)).Show();
+            new SchoolAgenda(ApplicationStartup.Run()).Show();
         }
     }
 }

@@ -78,10 +78,16 @@
     <Compile Include="Presentation\PresenterFactory.cs" />
     <Compile Include="Service\Course.cs" />
     <Compile Include="Service\IAgendaService.cs" />
+    <Compile Include="Views\DateButton.xaml.cs">
+      <DependentUpon>DateButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presentation\IView.cs" />
+    <Compile Include="Views\SchoolAgenda.xaml.cs">
+      <DependentUpon>SchoolAgenda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SchoolView.xaml.cs">
       <DependentUpon>SchoolView.xaml</DependentUpon>
     </Compile>
@@ -123,7 +129,15 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\DateButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SchoolAgenda.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

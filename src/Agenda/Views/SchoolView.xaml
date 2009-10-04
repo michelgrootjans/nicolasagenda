@@ -1,9 +1,8 @@
-﻿<Window x:Class="Agenda.Views.SchoolView"
+﻿<UserControl x:Class="Agenda.Views.SchoolView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Views="clr-namespace:Agenda.Views"
-    Title="SchoolView" Height="391.25" Width="394"
-        Closed="Window_Closed">
+    Height="360" Width="378" >
     <StackPanel Name="vakken">
         <Views:VakControl x:Name="vak0" Visibility="Hidden" />
         <Views:VakControl x:Name="vak1" Visibility="Hidden" />
@@ -13,4 +12,4 @@
         <Views:VakControl x:Name="vak5" Visibility="Hidden" />
         <Views:VakControl x:Name="vak6" Visibility="Hidden" />
     </StackPanel>
-</Window>
+</UserControl>
