@@ -13,5 +13,15 @@ namespace Agenda.Extensions
         {
             return new DateTime(year, 10, day);
         }
+
+        public static DateTime November(this int day, int year)
+        {
+            return new DateTime(year, 11, day);
+        }
+
+        public static DateTime December(this int day, int year)
+        {
+            return new DateTime(year, 12, day);
+        }
     }
 }

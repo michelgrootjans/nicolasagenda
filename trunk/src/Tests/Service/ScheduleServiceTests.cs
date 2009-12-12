@@ -1,5 +1,5 @@
 using System;
-using Agenda.Service;
+using Agenda.Services;
 using NUnit.Framework;
 using Tests.Extensions;
 using Tests.TestUtilities;
