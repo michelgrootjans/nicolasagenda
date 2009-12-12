@@ -6,7 +6,7 @@
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{08C7C709-229F-4A3F-A4E3-5BF44649E3D5}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Agenda</RootNamespace>
     <AssemblyName>Agenda</AssemblyName>
@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caliburn.Core, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Caliburn v1 RTW\Bin\NET-3.5\release\Caliburn.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.PresentationFramework, Version=1.0.0.26006, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Caliburn v1 RTW\Bin\NET-3.5\release\Caliburn.PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Caliburn v1 RTW\Bin\NET-3.5\release\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -52,49 +66,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ApplicationStartup.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Extensions\EventHandlerExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
-    <Compile Include="Presentation\AgendaPresenter.cs" />
-    <Compile Include="Presentation\ICourse.cs" />
-    <Compile Include="Presentation\IHomeAgendaPresenter.cs" />
-    <Compile Include="Presentation\IPresenter.cs" />
-    <Compile Include="Presentation\ISchoolAgendaPresenter.cs" />
-    <Compile Include="Presentation\ISchoolAgendaView.cs" />
-    <Compile Include="Presentation\PresenterFactory.cs" />
-    <Compile Include="Service\Course.cs" />
-    <Compile Include="Service\IAgendaService.cs" />
-    <Compile Include="Views\DateButton.xaml.cs">
-      <DependentUpon>DateButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HomeView.xaml.cs">
-      <DependentUpon>HomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\IView.cs" />
-    <Compile Include="Views\SchoolAgenda.xaml.cs">
-      <DependentUpon>SchoolAgenda.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SchoolView.xaml.cs">
-      <DependentUpon>SchoolView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Presentation\IWindowManager.cs" />
-    <Compile Include="Views\VakControl.xaml.cs">
-      <DependentUpon>VakControl.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="IOutputListener.cs" />
+    <Compile Include="Output.cs" />
+    <Compile Include="Presenters\IDagPresenter.cs" />
+    <Compile Include="Services\LoggingAgendaService.cs" />
+    <Compile Include="ViewModels\Course.cs" />
+    <Compile Include="Services\IAgendaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -108,15 +95,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Service\Roster\Friday.cs" />
-    <Compile Include="Service\ISchedule.cs" />
-    <Compile Include="Service\IScheduleService.cs" />
-    <Compile Include="Service\Roster\Monday.cs" />
-    <Compile Include="Service\Roster\Thursday.cs" />
-    <Compile Include="Service\Roster\Tuesday.cs" />
-    <Compile Include="Service\Roster\Wednesday.cs" />
-    <Compile Include="Service\Roster\WeekDay.cs" />
-    <Compile Include="Service\Roster\WeekendDay.cs" />
+    <Compile Include="ViewModels\Roster\Friday.cs" />
+    <Compile Include="Services\ISchedule.cs" />
+    <Compile Include="Services\IScheduleService.cs" />
+    <Compile Include="ViewModels\Roster\Monday.cs" />
+    <Compile Include="ViewModels\Roster\Thursday.cs" />
+    <Compile Include="ViewModels\Roster\Tuesday.cs" />
+    <Compile Include="ViewModels\Roster\Wednesday.cs" />
+    <Compile Include="ViewModels\Roster\WeekDay.cs" />
+    <Compile Include="ViewModels\Roster\WeekendDay.cs" />
+    <Compile Include="ViewModels\Dag.cs" />
+    <Compile Include="Views\DagView.xaml.cs">
+      <DependentUpon>DagView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WeekView.xaml.cs">
+      <DependentUpon>WeekView.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -129,25 +123,17 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\DateButton.xaml">
-      <SubType>Designer</SubType>
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\DagView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\HomeView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Views\WeekView.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SchoolAgenda.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SchoolView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\VakControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

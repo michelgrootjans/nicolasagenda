@@ -1,0 +1,61 @@
+﻿<Window x:Class="Agenda.Views.DagView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburnproject.org"
+    Title="DagView" Height="400" Width="600">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" DataContext="{Binding Dag}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="&lt;" cal:Message.Attach="PreviousDay" />
+            <Label Grid.Column="1" Content="{Binding Date}" />
+            <Button Grid.Column="2" Content="&gt;" cal:Message.Attach="NextDay" />
+        </Grid>
+        <Grid DockPanel.Dock="Left" Width="200" DataContext="{Binding Dag}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Taken" />
+            <TextBox Grid.Row="1" Text="{Binding Taken}"/>
+            <Label Content="Lessen" Grid.Row="2" />
+            <TextBox Grid.Row="3" Text="{Binding Lessen}"/>
+        </Grid>
+        <Grid Margin="10" DataContext="{Binding Dag}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="{Binding [0].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding [0].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="{Binding [1].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding [1].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="{Binding [2].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding [2].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="3" Content="{Binding [3].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding [3].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="4" Content="{Binding [4].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding [4].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="5" Content="{Binding [5].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding [5].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="6" Content="{Binding [6].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding [6].Inhoud}"/>
+        </Grid>
+    </DockPanel>
+</Window>

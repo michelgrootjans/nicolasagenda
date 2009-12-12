@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Agenda.Extensions;
-using Agenda.Presentation;
-using Agenda.Service;
+using Agenda.Services;
+using Agenda.ViewModels;
 using NUnit.Framework;
 using Tests.Extensions;
 using Tests.TestUtilities;
@@ -11,7 +11,7 @@ using Tests.TestUtilities;
 namespace Tests.Service
 {
     [TestFixture]
-    public abstract class AgendaTest : InstanceContextSpecification<IAgendaService>
+    public abstract class AgendaServiceTest : InstanceContextSpecification<IAgendaService>
     {
         protected readonly DateTime vijfOktober = 5.Oktober(2009);
         private const string AGENDA_DIR = "Agenda";
@@ -24,7 +24,7 @@ namespace Tests.Service
                 Directory.CreateDirectory(AGENDA_DIR);
                 return;
             }
-            foreach(var file in Directory.GetFiles(AGENDA_DIR))
+            foreach (var file in Directory.GetFiles(AGENDA_DIR))
                 File.Delete(file);
         }
 
@@ -34,17 +34,15 @@ namespace Tests.Service
         }
     }
 
-    public class when_file_doesnt_exist : AgendaTest
+    public class when_file_doesnt_exist : AgendaServiceTest
     {
         [Test]
         public void should_get_an_empty_day()
         {
-            var agenda = sut.GetContentFor(vijfOktober);
-            agenda.Count.ShouldBeEqualTo(7);
-            var uur = 0;
-            foreach (var course in agenda)
+            var dag = sut.GetContentFor(vijfOktober);
+            dag.Courses.Count.ShouldBeEqualTo(7);
+            foreach (var course in dag.Courses)
             {
-                course.Uur.ShouldBeEqualTo(uur++);
                 course.Vak.ShouldBeEmpty();
                 course.Inhoud.ShouldBeEmpty();
             }
@@ -53,43 +51,43 @@ namespace Tests.Service
         [Test]
         public void should_create_a_new_file()
         {
-            var courses = new List<ICourse> {new Course(2, "FRA", "les geleerd")};
             File.Exists(PATH).ShouldBeFalse();
-
-            sut.Save(courses, vijfOktober);
+            var dag = new Dag();
+            sut.Save(dag);
 
             File.Exists(PATH).ShouldBeTrue();
         }
     }
 
-    public class when_file_exists_with_one_course : AgendaTest
+    public class when_file_exists_with_one_course : AgendaServiceTest
     {
-        private List<ICourse> courses;
-        private IList<ICourse> agenda;
+        private Dag dag;
 
         protected override void Arrange()
         {
             base.Arrange();
-            courses = new List<ICourse> {new Course(2, "FRA", "les geleerd")};
-            CreateSystemUnderTest().Save(courses, vijfOktober);
+            dag = new Dag
+                      {
+                          Courses = new List<Course> {new Course("FRA", "les geleerd")}
+                      };
+            CreateSystemUnderTest().Save(dag);
         }
 
         protected override void Act()
         {
-            agenda = sut.GetContentFor(vijfOktober);
+            dag = sut.GetContentFor(vijfOktober);
         }
 
         [Test]
         public void should_have_only_one_course()
         {
-            agenda.Count.ShouldBeEqualTo(1);
+            dag.Courses.Count.ShouldBeEqualTo(1);
         }
 
         [Test]
         public void should_have_the_right_content()
         {
-            var course = agenda[0];
-            course.Uur.ShouldBeEqualTo(2);
+            var course = dag[0];
             course.Vak.ShouldBeEqualTo("FRA");
             course.Inhoud.ShouldBeEqualTo("les geleerd");
         }

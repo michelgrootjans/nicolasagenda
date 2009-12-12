@@ -1,17 +1,22 @@
-﻿using System.Windows;
-using Agenda.Extensions;
-using Agenda.Presentation;
-using Agenda.Views;
+﻿using System;
+using Agenda.Presenters;
 
 namespace Agenda
 {
-    public partial class App : Application
+    public partial class App
     {
-        private static IWindowManager windowManager;
-
-        public App()
+        protected override object CreateRootModel()
         {
-            new SchoolAgenda(ApplicationStartup.Run()).Show();
+            Output.Register(new ConsoleOutputListener());
+            return Container.GetInstance<IDagPresenter>();
+        }
+    }
+
+    public class ConsoleOutputListener : IOutputListener
+    {
+        public void Write(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
