@@ -22,7 +22,9 @@ namespace Agenda.Services
 
         public AgendaService()
         {
-            serializer = new XmlSerializer(typeof (Dag));
+            if (!Directory.Exists(AGENDA_DIR))
+                Directory.CreateDirectory(AGENDA_DIR);
+            serializer = new XmlSerializer(typeof(Dag));
             scheduleService = new ScheduleService();
         }
 
@@ -78,9 +80,7 @@ namespace Agenda.Services
 
         private static string GetFileName(DateTime date)
         {
-            if (!Directory.Exists(AGENDA_DIR))
-                Directory.CreateDirectory(AGENDA_DIR);
-            return string.Format(AGENDA_DIR + "\\{0}", date.ToString("yyyy_MM_dd"));
+            return string.Format(AGENDA_DIR + "\\{0}.xml", date.ToString("yyyy_MM_dd"));
         }
     }
 }

@@ -9,9 +9,12 @@ namespace Agenda.Presenters
 {
     public interface IDagPresenter : IPresenter
     {
+        Dag Dag { get;}
+        void GoToNextDay();
+        void GoToPreviousDay();
     }
 
-    [PerRequest(typeof(IDagPresenter))]
+    [PerRequest(typeof (IDagPresenter))]
     public class DagPresenter : Presenter, IDagPresenter
     {
         private readonly IAgendaService agendaService;
@@ -27,14 +30,14 @@ namespace Agenda.Presenters
             UpdateDag(MostRecentSchoolday());
         }
 
-        public void PreviousDay()
+        public void GoToPreviousDay()
         {
-            UpdateDag(NextSchoolDay(-1));
+            UpdateDag(Dag.PreviousSchoolDay);
         }
 
-        public void NextDay()
+        public void GoToNextDay()
         {
-            UpdateDag(NextSchoolDay(1));
+            UpdateDag(Dag.NextSchoolDay);
         }
 
         private void UpdateDag(DateTime dateTime)
@@ -46,20 +49,12 @@ namespace Agenda.Presenters
         }
 
 
-        private DateTime MostRecentSchoolday()
+        public DateTime MostRecentSchoolday()
         {
             var schoolday = DateTime.Now;
             while (schoolday.IsWeekend())
                 schoolday = schoolday.AddDays(-1);
             return schoolday;
-        }
-
-        private DateTime NextSchoolDay(int direction)
-        {
-            var nextSchoolDay = Dag.Date.AddDays(direction);
-            while (nextSchoolDay.IsWeekend())
-                nextSchoolDay = nextSchoolDay.AddDays(direction);
-            return nextSchoolDay;
         }
 
         public override void Deactivate()
