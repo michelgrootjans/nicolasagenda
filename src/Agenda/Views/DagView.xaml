@@ -2,7 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="http://www.caliburnproject.org"
+    xmlns:local="clr-namespace:Agenda.Converters"
     Title="DagView" Height="400" Width="600">
+    <Window.Resources>
+        <local:DateToStringConverter x:Key="dateToText" />
+    </Window.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Top" DataContext="{Binding Dag}">
             <Grid.ColumnDefinitions>
@@ -10,9 +14,18 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Content="&lt;" cal:Message.Attach="PreviousDay" />
-            <Label Grid.Column="1" Content="{Binding Date}" />
-            <Button Grid.Column="2" Content="&gt;" cal:Message.Attach="NextDay" />
+            <Button Grid.Column="0" 
+                    Content="{Binding Path=PreviousSchoolDay, Converter={StaticResource dateToText}}"
+                    cal:Message.Attach="GoToPreviousDay" 
+                    HorizontalAlignment="Left" />
+            <Label Grid.Column="1" 
+                   Content="{Binding Path=Date, Converter={StaticResource dateToText}}" 
+                   HorizontalContentAlignment="Center"
+                   FontSize="14" FontWeight="Bold" />
+            <Button Grid.Column="2" 
+                    Content="{Binding Path=NextSchoolDay, Converter={StaticResource dateToText}}"
+                    cal:Message.Attach="GoToNextDay"
+                    HorizontalAlignment="Right" />
         </Grid>
         <Grid DockPanel.Dock="Left" Width="200" DataContext="{Binding Dag}">
             <Grid.RowDefinitions>

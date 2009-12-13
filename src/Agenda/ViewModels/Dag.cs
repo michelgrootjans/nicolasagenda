@@ -12,6 +12,16 @@ namespace Agenda.ViewModels
         public string Taken { get; set; }
         public string Lessen { get; set; }
 
+        public DateTime NextSchoolDay
+        {
+            get { return NextDayInDirection(1); }
+        }
+
+        public DateTime PreviousSchoolDay
+        {
+            get { return NextDayInDirection(-1); }
+        }
+
         public Dag()
         {
             Courses = new List<Course>();
@@ -33,6 +43,14 @@ namespace Agenda.ViewModels
         {
             get { return Courses[index]; }
             set { Courses[index] = value; }
+        }
+
+        private DateTime NextDayInDirection(int direction)
+        {
+            var nextSchoolDay = Date.AddDays(direction);
+            while (nextSchoolDay.IsWeekend())
+                nextSchoolDay = nextSchoolDay.AddDays(direction);
+            return nextSchoolDay;
         }
     }
 }
