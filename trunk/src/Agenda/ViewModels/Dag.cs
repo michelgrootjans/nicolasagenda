@@ -9,8 +9,15 @@ namespace Agenda.ViewModels
     {
         public DateTime Date { get; set; }
         public List<Course> Courses { get; set; }
-        public string Taken { get; set; }
-        public string Lessen { get; set; }
+        public List<Opgave> Taken { get; set; }
+        public List<Opgave> Lessen { get; set; }
+
+        public Dag()
+        {
+            Courses = new List<Course>();
+            Taken = new List<Opgave>();
+            Lessen = new List<Opgave>();
+        }
 
         public DateTime NextSchoolDay
         {
@@ -20,11 +27,6 @@ namespace Agenda.ViewModels
         public DateTime PreviousSchoolDay
         {
             get { return NextDayInDirection(-1); }
-        }
-
-        public Dag()
-        {
-            Courses = new List<Course>();
         }
 
         public Dag(IList<Course> courses, IList<string> schedule)

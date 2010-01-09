@@ -3,15 +3,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cal="http://www.caliburnproject.org"
     xmlns:local="clr-namespace:Agenda.Converters"
+    xmlns:Controls="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
     Title="DagView" Height="400" Width="600">
     <Window.Resources>
         <local:DateToStringConverter x:Key="dateToText" />
+        <DataTemplate x:Key="opgaveTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{Binding Vak}" />
+                <Label Grid.Column="1" Content="{Binding Inhoud}" />
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Top" DataContext="{Binding Dag}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" 
@@ -26,6 +38,7 @@
                     Content="{Binding Path=NextSchoolDay, Converter={StaticResource dateToText}}"
                     cal:Message.Attach="GoToNextDay"
                     HorizontalAlignment="Right" />
+            <Controls:DatePicker Grid.Column="3" Text="{Binding Path=Date}"  />
         </Grid>
         <Grid DockPanel.Dock="Left" Width="200" DataContext="{Binding Dag}">
             <Grid.RowDefinitions>
@@ -35,13 +48,21 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="Taken" />
-            <TextBox Grid.Row="1" Text="{Binding Taken}"/>
+            <Grid Grid.Row="1">
+                <ListBox 
+                    ItemsSource="{Binding Taken}" 
+                    ItemTemplate="{StaticResource opgaveTemplate}" />
+            </Grid>
             <Label Content="Lessen" Grid.Row="2" />
-            <TextBox Grid.Row="3" Text="{Binding Lessen}"/>
+            <Grid Grid.Row="3">
+                <ListBox 
+                    ItemsSource="{Binding Lessen}" 
+                    ItemTemplate="{StaticResource opgaveTemplate}" />
+            </Grid>
         </Grid>
         <Grid Margin="10" DataContext="{Binding Dag}" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" MinWidth="10" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
