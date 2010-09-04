@@ -1,0 +1,95 @@
+﻿<Window x:Class="Agenda.Views.DagView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cal="http://www.caliburnproject.org"
+    xmlns:local="clr-namespace:Agenda.Converters"
+    xmlns:Controls="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+    Title="DagView" Height="400" Width="600">
+    <Window.Resources>
+        <local:DateToStringConverter x:Key="dateToText" />
+        <DataTemplate x:Key="opgaveTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="{Binding Vak}" />
+                <Label Grid.Column="1" Content="{Binding Inhoud}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" DataContext="{Binding Dag}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" 
+                    Content="{Binding Path=PreviousSchoolDay, Converter={StaticResource dateToText}}"
+                    cal:Message.Attach="GoToPreviousDay" 
+                    HorizontalAlignment="Left" />
+            <Label Grid.Column="1" 
+                   Content="{Binding Path=Date, Converter={StaticResource dateToText}}" 
+                   HorizontalContentAlignment="Center"
+                   FontSize="14" FontWeight="Bold" />
+            <Button Grid.Column="2" 
+                    Content="{Binding Path=NextSchoolDay, Converter={StaticResource dateToText}}"
+                    cal:Message.Attach="GoToNextDay"
+                    HorizontalAlignment="Right" />
+            <Controls:DatePicker Grid.Column="3" Text="{Binding Path=Date}"  />
+        </Grid>
+        <Grid DockPanel.Dock="Left" Width="200" DataContext="{Binding Dag}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Taken" />
+            <Grid Grid.Row="1">
+                <ListBox 
+                    ItemsSource="{Binding Taken}" 
+                    ItemTemplate="{StaticResource opgaveTemplate}" />
+            </Grid>
+            <Label Content="Lessen" Grid.Row="2" />
+            <Grid Grid.Row="3">
+                <ListBox 
+                    ItemsSource="{Binding Lessen}" 
+                    ItemTemplate="{StaticResource opgaveTemplate}" />
+            </Grid>
+        </Grid>
+        <Grid Margin="10" DataContext="{Binding Dag}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="10" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="{Binding [0].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding [0].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="1" Content="{Binding [1].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding [1].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="2" Content="{Binding [2].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding [2].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="3" Content="{Binding [3].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding [3].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="4" Content="{Binding [4].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding [4].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="5" Content="{Binding [5].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="5" Text="{Binding [5].Inhoud}"/>
+            <Label Grid.Column="0" Grid.Row="6" Content="{Binding [6].Vak}" />
+            <TextBox Grid.Column="1" Grid.Row="6" Text="{Binding [6].Inhoud}"/>
+        </Grid>
+    </DockPanel>
+</Window>
