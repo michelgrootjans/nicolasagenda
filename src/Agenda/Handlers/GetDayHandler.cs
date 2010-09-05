@@ -18,12 +18,12 @@ namespace Agendas.Handlers
             }
         }
 
-        private IDay GetOrCreateDay(ISession session, DateTime dateTime)
+        private IDag GetOrCreateDay(ISession session, DateTime dateTime)
         {
             var day = session
                 .Query(new GetDagQuery(dateTime))
                 .UniqueResult();
-            return day ?? new Day(dateTime);
+            return day ?? new Dag(dateTime);
         }
     }
 }

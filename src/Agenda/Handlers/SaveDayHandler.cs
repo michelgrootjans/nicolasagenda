@@ -15,7 +15,7 @@ namespace Agendas.Handlers
             {
                 var day = session.Query(new GetDagQuery(command.Date)).UniqueResult();
                 if(day == null)
-                    session.Save(new Day(command.Date));
+                    session.Save(new Dag(command.Date));
                 transaction.Commit();
             }
         }

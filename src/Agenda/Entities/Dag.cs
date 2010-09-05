@@ -3,18 +3,18 @@ using FluentNHibernate.Data;
 
 namespace Agendas.Entities
 {
-    public interface IDay
+    public interface IDag
     {
         DateTime Date { get; }
     }
 
-    public class Day : Entity, IDay
+    public class Dag : Entity, IDag
     {
-        protected Day()
+        protected Dag()
         {
         }
 
-        public Day(DateTime date) : this()
+        public Dag(DateTime date) : this()
         {
             Date = date;
         }

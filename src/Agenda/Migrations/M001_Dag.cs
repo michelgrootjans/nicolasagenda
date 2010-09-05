@@ -6,7 +6,7 @@ namespace Agendas.Migrations
     [Migration(001)]
     public class M001_Dag : Migration
     {
-        private const string tableName = "Day";
+        private const string tableName = "Dag";
 
         public override void Up()
         {
