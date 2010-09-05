@@ -2,7 +2,7 @@
 using Agendas.Entities;
 using Agendas.Handlers;
 using Agendas.Migrations;
-using Agendas.Queries;
+using Agendas.Requests;
 using AutoMapper;
 
 namespace Agendas.Infrastructure
