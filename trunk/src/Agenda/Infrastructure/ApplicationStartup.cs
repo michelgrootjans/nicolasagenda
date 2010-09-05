@@ -20,7 +20,7 @@ namespace Agendas.Infrastructure
         {
             Mapper.CreateMap<DateTime, string>()
                 .ConvertUsing(d => d.ToLongDateString());
-            Mapper.CreateMap<IDay, GetDayResponse>();
+            Mapper.CreateMap<IDag, GetDayResponse>();
 
             Mapper.AssertConfigurationIsValid();
         }

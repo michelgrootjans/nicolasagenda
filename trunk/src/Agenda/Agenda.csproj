@@ -104,7 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\SaveDay.cs" />
-    <Compile Include="Entities\Day.cs" />
+    <Compile Include="Entities\Dag.cs" />
+    <Compile Include="Entities\DagUurrooster.cs" />
+    <Compile Include="Entities\Uurroorster.cs" />
+    <Compile Include="Entities\Vak.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="FluentMappings\DayMap.cs" />
     <Compile Include="Handlers\GetDayHandler.cs" />
     <Compile Include="Handlers\Queries\GetDagQuery.cs" />

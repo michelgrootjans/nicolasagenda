@@ -6,7 +6,7 @@ using NHibernate.Criterion;
 
 namespace Agendas.Handlers.Queries
 {
-    public class GetDagQuery : IQuery<IDay>
+    public class GetDagQuery : IQuery<IDag>
     {
         private readonly DateTime dateTime;
 
@@ -15,11 +15,11 @@ namespace Agendas.Handlers.Queries
             this.dateTime = dateTime;
         }
 
-        public IQueryResult<IDay> Execute(ISession session)
+        public IQueryResult<IDag> Execute(ISession session)
         {
-            var criteria = session.CreateCriteria<IDay>()
+            var criteria = session.CreateCriteria<IDag>()
                 .Add(Restrictions.Eq("Date", dateTime.Date));
-            return new CriteriaResult<IDay>(criteria);
+            return new CriteriaResult<IDag>(criteria);
         }
     }
 }

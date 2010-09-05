@@ -15,7 +15,7 @@ namespace Agendas.Infrastructure
         {
             var configuration = new Configuration().Configure("hibernate.cfg.xml");
             sessionFactory = Fluently.Configure(configuration)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Day>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Dag>())
                 .BuildConfiguration()
                 .BuildSessionFactory();
         }

@@ -3,7 +3,7 @@ using FluentNHibernate.Mapping;
 
 namespace Agendas.FluentMappings
 {
-    public class DayMap : ClassMap<Day>
+    public class DayMap : ClassMap<Dag>
     {
         public DayMap()
         {
