@@ -121,6 +121,7 @@
     <Compile Include="Infrastructure\NHibernateProvider.cs" />
     <Compile Include="Infrastructure\SessionExtensions.cs" />
     <Compile Include="Migrations\M001_Dag.cs" />
+    <Compile Include="Requests\GetDayRequest.cs" />
     <Compile Include="Views\AgendaView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,7 +134,6 @@
     <Compile Include="Views\DayView.Designer.cs">
       <DependentUpon>DayView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Queries\GetDayRequest.cs" />
     <Compile Include="Views\MdiChild.cs">
       <SubType>Form</SubType>
     </Compile>

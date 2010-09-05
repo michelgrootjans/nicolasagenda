@@ -1,7 +1,7 @@
 ﻿using System;
 using Agendas.Commands;
 using Agendas.Infrastructure;
-using Agendas.Queries;
+using Agendas.Requests;
 
 namespace Agendas.Views
 {

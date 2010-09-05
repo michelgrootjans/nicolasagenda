@@ -2,7 +2,7 @@ using System;
 using Agendas.Entities;
 using Agendas.Handlers.Queries;
 using Agendas.Infrastructure;
-using Agendas.Queries;
+using Agendas.Requests;
 using NHibernate;
 
 namespace Agendas.Handlers
