@@ -1,21 +1,28 @@
 ﻿namespace Agendas.Infrastructure
 {
-
     public static class Execute
     {
-        public static TResult Query<TQuery, TResult>(TQuery query) 
-            where TQuery : IQuery<TResult>
-            where TResult : IEvent
+        public static void Request<TRequest, TResponse>(TRequest request)
+            where TRequest : IRequest<TResponse>
+            where TResponse : IEvent
         {
-            var handler = IocContainer.GetImplementationOf<IQueryHandler<TQuery, TResult>>();
-            var result = handler.Handle(query);
-            BroadCast(result);
-            return result;
+            var handler = IocContainer.GetImplementationOf<IRequestHandler<TRequest, TResponse>>();
+            var response = handler.Handle(request);
+            BroadCast(response);
         }
 
-        private static void BroadCast<T>(T domainEvent) where T : IEvent
+        public static void Command<TCommand>(TCommand command) where TCommand : ICommand
         {
-            var handlers = IocContainer.GetImplementationsOf<IEventHandler<T>>();
+            var handlers = IocContainer.GetImplementationsOf<ICommandHandler<TCommand>>();
+            foreach (var handler in handlers)
+            {
+                handler.Execute(command);
+            }
+        }
+
+        private static void BroadCast<TEvent>(TEvent domainEvent) where TEvent : IEvent
+        {
+            var handlers = IocContainer.GetImplementationsOf<IListenTo<TEvent>>();
             foreach (var handler in handlers)
             {
                 handler.HandleEvent(domainEvent);

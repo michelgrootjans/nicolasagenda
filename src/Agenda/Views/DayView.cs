@@ -1,27 +1,39 @@
 ﻿using System;
-using System.Windows.Forms;
+using Agendas.Commands;
 using Agendas.Infrastructure;
 using Agendas.Queries;
 
 namespace Agendas.Views
 {
-    public partial class DayView : MdiChild, IEventHandler<GetDayResult>
+    public partial class DayView : MdiChild, IListenTo<GetDayResponse>
     {
+        private readonly DateTime date = DateTime.Today;
+
         public DayView()
         {
             InitializeComponent();
-            Initialize(DateTime.Now);
         }
 
-        private void Initialize(DateTime date)
+        public DayView(DateTime date)
         {
-            Text = date.ToShortDateString();
-            Execute.Query<GetDay, GetDayResult>(new GetDay(date));
+            InitializeComponent();
+            this.date = date.Date;
         }
 
-        public void HandleEvent(GetDayResult domainEvent)
+        private void DayView_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Recieved an {0}", domainEvent));
+            Execute.Request<GetDayRequest, GetDayResponse>(new GetDayRequest(date));
+        }
+
+        public void HandleEvent(GetDayResponse domainEvent)
+        {
+            if(domainEvent.Date.Equals(date))
+                Text = domainEvent.Date.ToLongDateString();
+        }
+
+        private void DayView_FormClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            Execute.Command(new SaveDay(date));
         }
     }
 }

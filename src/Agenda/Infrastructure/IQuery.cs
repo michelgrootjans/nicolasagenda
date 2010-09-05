@@ -1,12 +1,9 @@
-﻿namespace Agendas.Infrastructure
-{
-    public interface IQuery<TResult>
-    {
-    }
+﻿using NHibernate;
 
-    public interface IQueryHandler<TQuery, TResult> 
-        where TQuery : IQuery<TResult>
+namespace Agendas.Infrastructure
+{
+    public interface IQuery<T>
     {
-        TResult Handle(TQuery query);
+        IQueryResult<T> Execute(ISession session);
     }
 }

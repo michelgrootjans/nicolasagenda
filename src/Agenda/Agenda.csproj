@@ -61,6 +61,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\log4net\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Migrator, Version=0.9.0.18654, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\migratordotnet\Migrator.dll</HintPath>
+    </Reference>
+    <Reference Include="Migrator.Framework, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\migratordotnet\Migrator.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Migrator.Providers, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\migratordotnet\Migrator.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nhibernate\Required_Bins\NHibernate.dll</HintPath>
@@ -91,15 +103,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Dag.cs" />
+    <Compile Include="Commands\SaveDay.cs" />
+    <Compile Include="Entities\Day.cs" />
+    <Compile Include="FluentMappings\DayMap.cs" />
     <Compile Include="Handlers\GetDayHandler.cs" />
+    <Compile Include="Handlers\Queries\GetDagQuery.cs" />
+    <Compile Include="Handlers\SaveDayHandler.cs" />
     <Compile Include="Infrastructure\ApplicationStartup.cs" />
+    <Compile Include="Infrastructure\CriteriaResult.cs" />
+    <Compile Include="Infrastructure\ICommandHandler.cs" />
     <Compile Include="Infrastructure\IocContainer.cs" />
     <Compile Include="Infrastructure\IEvent.cs" />
     <Compile Include="Infrastructure\IQuery.cs" />
+    <Compile Include="Infrastructure\IQueryResult.cs" />
+    <Compile Include="Infrastructure\IRequest.cs" />
     <Compile Include="Infrastructure\Map.cs" />
-    <Compile Include="Infrastructure\NHibernateSessionProvider.cs" />
-    <Compile Include="Infrastructure\StaticStateStore.cs" />
+    <Compile Include="Infrastructure\NHibernateProvider.cs" />
+    <Compile Include="Infrastructure\SessionExtensions.cs" />
+    <Compile Include="Migrations\M001_Dag.cs" />
     <Compile Include="Views\AgendaView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,7 +133,7 @@
     <Compile Include="Views\DayView.Designer.cs">
       <DependentUpon>DayView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Queries\GetDay.cs" />
+    <Compile Include="Queries\GetDayRequest.cs" />
     <Compile Include="Views\MdiChild.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,9 +170,6 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
