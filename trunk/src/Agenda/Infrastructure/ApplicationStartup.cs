@@ -1,8 +1,9 @@
-﻿using Agendas.Entities;
+﻿using System;
+using Agendas.Entities;
 using Agendas.Handlers;
+using Agendas.Migrations;
 using Agendas.Queries;
 using AutoMapper;
-using Configuration = NHibernate.Cfg.Configuration;
 
 namespace Agendas.Infrastructure
 {
@@ -11,13 +12,15 @@ namespace Agendas.Infrastructure
         public static void Run()
         {
             InitializeContainer();
-            InitializeOrm();
+            MigrateToLatestVersion();
             InitializeMapping();
         }
 
         private static void InitializeMapping()
         {
-            Mapper.CreateMap<IDag, GetDayResult>();
+            Mapper.CreateMap<DateTime, string>()
+                .ConvertUsing(d => d.ToLongDateString());
+            Mapper.CreateMap<IDay, GetDayResponse>();
 
             Mapper.AssertConfigurationIsValid();
         }
@@ -26,14 +29,18 @@ namespace Agendas.Infrastructure
         {
             //Poor man's dependency injection
             IocContainer.Register(new GetDayHandler());
+            IocContainer.Register(new SaveDayHandler());
         }
 
-        private static void InitializeOrm()
+        private static void MigrateToLatestVersion()
         {
-            NHibernateSessionProvider.Initialize(
-                new Configuration().Configure().BuildSessionFactory(),
-                new StaticStateStore()
+            var migrator = new Migrator.Migrator(
+                "SQLite",
+                NHibernateProvider.CreateSession().Connection.ConnectionString,
+                typeof (M001_Dag).Assembly
                 );
+            migrator.MigrateTo(0);
+            migrator.MigrateToLastVersion();
         }
     }
 }

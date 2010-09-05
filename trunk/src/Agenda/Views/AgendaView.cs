@@ -19,5 +19,10 @@ namespace Agendas.Views
             dayView.MdiParent = this;
             dayView.Show();
         }
+
+        private void dateTimePicker_ValueChanged(object sender, System.EventArgs e)
+        {
+            Show(new DayView(dateTimePicker.Value));
+        }
     }
 }

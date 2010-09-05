@@ -4,8 +4,8 @@
     {
     }
 
-    internal interface IEventHandler<T> where T : IEvent
+    internal interface IListenTo<TEvent> where TEvent : IEvent
     {
-        void HandleEvent(T domainEvent);
+        void HandleEvent(TEvent domainEvent);
     }
 }

@@ -3,9 +3,9 @@ using Agendas.Infrastructure;
 
 namespace Agendas.Queries
 {
-    public class GetDay : IQuery<GetDayResult>
+    public class GetDayRequest : IRequest<GetDayResponse>
     {
-        public GetDay(DateTime dateTime)
+        public GetDayRequest(DateTime dateTime)
         {
             Date = dateTime.Date;
         }
@@ -13,7 +13,8 @@ namespace Agendas.Queries
         public DateTime Date { get; private set; }
     }
 
-    public class GetDayResult : IEvent
+    public class GetDayResponse : IEvent
     {
+        public DateTime Date { get; private set; }
     }
 }

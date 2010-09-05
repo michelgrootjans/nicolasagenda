@@ -37,6 +37,8 @@
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.Name = "DayView";
             this.Text = "DayView";
+            this.Load += new System.EventHandler(this.DayView_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DayView_FormClosed);
             this.ResumeLayout(false);
 
         }

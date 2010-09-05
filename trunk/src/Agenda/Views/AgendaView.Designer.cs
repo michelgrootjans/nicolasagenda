@@ -29,18 +29,28 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnVandaag = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dateTimePicker);
             this.panel1.Controls.Add(this.btnVandaag);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(162, 695);
             this.panel1.TabIndex = 1;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(12, 41);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(131, 20);
+            this.dateTimePicker.TabIndex = 1;
+            this.dateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
             // 
             // btnVandaag
             // 
@@ -72,6 +82,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnVandaag;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
     }
 }
 

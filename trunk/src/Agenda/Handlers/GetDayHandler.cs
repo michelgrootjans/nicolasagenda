@@ -1,19 +1,29 @@
+using System;
 using Agendas.Entities;
+using Agendas.Handlers.Queries;
 using Agendas.Infrastructure;
 using Agendas.Queries;
-using NHibernate.Criterion;
+using NHibernate;
 
 namespace Agendas.Handlers
 {
-    public class GetDayHandler : IQueryHandler<GetDay, GetDayResult>
+    public class GetDayHandler : IRequestHandler<GetDayRequest, GetDayResponse>
     {
-        public GetDayResult Handle(GetDay query)
+        public GetDayResponse Handle(GetDayRequest request)
         {
-            var session = NHibernateSessionProvider.GetSession();
-            var dag = session.CreateCriteria<IDag>()
-                .Add(Restrictions.Eq("Date", query.Date))
+            using (var session = NHibernateProvider.CreateSession())
+            {
+                var day = GetOrCreateDay(session, request.Date);
+                return Map.This(day).ToA<GetDayResponse>();
+            }
+        }
+
+        private IDay GetOrCreateDay(ISession session, DateTime dateTime)
+        {
+            var day = session
+                .Query(new GetDagQuery(dateTime))
                 .UniqueResult();
-            return Map.This(dag).ToA<GetDayResult>();
+            return day ?? new Day(dateTime);
         }
     }
 }
