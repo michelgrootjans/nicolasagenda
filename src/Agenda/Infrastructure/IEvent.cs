@@ -1,11 +1,7 @@
-﻿namespace Agendas.Infrastructure
-{
-    public interface IEvent
-    {
-    }
-
-    internal interface IListenTo<TEvent> where TEvent : IEvent
-    {
-        void HandleEvent(TEvent domainEvent);
-    }
-}
+﻿//namespace Agendas.Infrastructure
+//{
+//    internal interface IListenTo<TEvent>
+//    {
+//        void HandleEvent(TEvent domainEvent);
+//    }
+//}

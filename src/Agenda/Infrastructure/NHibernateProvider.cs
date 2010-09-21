@@ -3,21 +3,16 @@ using Agendas.Entities;
 using FluentNHibernate.Cfg;
 using NHibernate;
 using NHibernate.Cfg;
-using NHibernate.Context;
 
 namespace Agendas.Infrastructure
 {
     public static class NHibernateProvider
     {
-        private static readonly ISessionFactory sessionFactory;
+        private static ISessionFactory sessionFactory;
 
-        static NHibernateProvider()
+        public static void Initialize(ISessionFactory aSessionFactory)
         {
-            var configuration = new Configuration().Configure("hibernate.cfg.xml");
-            sessionFactory = Fluently.Configure(configuration)
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Dag>())
-                .BuildConfiguration()
-                .BuildSessionFactory();
+            sessionFactory = aSessionFactory;
         }
 
         public static ISession CreateSession()
