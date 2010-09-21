@@ -1,12 +1,11 @@
-﻿namespace Agendas.Infrastructure
-{
-    public interface IRequest<TResponse>
-    {
-    }
+﻿//namespace Agendas.Infrastructure
+//{
+//    public interface IRequest<TResponse>
+//    {
+//    }
 
-    public interface IRequestHandler<TRequest, TResponse>
-        where TRequest : IRequest<TResponse>
-    {
-        TResponse Handle(TRequest request);
-    }
-}
+//    public interface IRequestHandler<TRequest>
+//    {
+//        void Handle(TRequest request);
+//    }
+//}

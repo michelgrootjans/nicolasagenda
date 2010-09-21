@@ -8,5 +8,10 @@ namespace Agendas.Extensions
         {
             return date.Date.AddHours(hour);
         }
+
+        public static DateTime At(this DateTime date, int hour, int minutes)
+        {
+            return date.At(hour).AddMinutes(minutes);
+        }
     }
 }

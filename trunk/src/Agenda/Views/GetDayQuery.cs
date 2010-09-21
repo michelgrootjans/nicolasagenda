@@ -1,24 +1,24 @@
-using System;
+﻿using System;
 using Agendas.Entities;
 using Agendas.Infrastructure;
 using NHibernate;
 using NHibernate.Criterion;
 
-namespace Agendas.Handlers.Queries
+namespace Agendas.Views
 {
-    public class GetDagQuery : IQuery<IDag>
+    public class GetDayQuery : IQuery<IDag>
     {
-        private readonly DateTime dateTime;
+        private DateTime day;
 
-        public GetDagQuery(DateTime dateTime)
+        public GetDayQuery(DateTime day)
         {
-            this.dateTime = dateTime;
+            this.day = day.Date;
         }
 
         public IQueryResult<IDag> Execute(ISession session)
         {
             var criteria = session.CreateCriteria<IDag>()
-                .Add(Restrictions.Eq("Date", dateTime.Date));
+                .Add(Restrictions.Eq("Date", day));
             return new CriteriaResult<IDag>(criteria);
         }
     }

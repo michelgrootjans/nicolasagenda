@@ -37,10 +37,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nhibernate\Required_Bins\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper, Version=1.1.0.188, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\automapper\NET35\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\castle.core\Castle.Core.dll</HintPath>
@@ -103,20 +99,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SaveDay.cs" />
     <Compile Include="Entities\Dag.cs" />
-    <Compile Include="Entities\DagUurrooster.cs" />
-    <Compile Include="Entities\Uurroorster.cs" />
-    <Compile Include="Entities\Vak.cs" />
+    <Compile Include="Entities\LesUur.cs" />
+    <Compile Include="Extensions\ComparableExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="FluentMappings\DayMap.cs" />
-    <Compile Include="Handlers\GetDayHandler.cs" />
-    <Compile Include="Handlers\Queries\GetDagQuery.cs" />
-    <Compile Include="Handlers\SaveDayHandler.cs" />
+    <Compile Include="FluentMappings\LesuurMap.cs" />
     <Compile Include="Infrastructure\ApplicationStartup.cs" />
     <Compile Include="Infrastructure\CriteriaResult.cs" />
-    <Compile Include="Infrastructure\ICommandHandler.cs" />
     <Compile Include="Infrastructure\IocContainer.cs" />
     <Compile Include="Infrastructure\IEvent.cs" />
     <Compile Include="Infrastructure\IQuery.cs" />
@@ -126,6 +117,7 @@
     <Compile Include="Infrastructure\NHibernateProvider.cs" />
     <Compile Include="Infrastructure\SessionExtensions.cs" />
     <Compile Include="Migrations\M001_Dag.cs" />
+    <Compile Include="Migrations\M002_LesUur.cs" />
     <Compile Include="Requests\GetDayRequest.cs" />
     <Compile Include="Views\AgendaView.cs">
       <SubType>Form</SubType>
@@ -133,12 +125,16 @@
     <Compile Include="Views\AgendaView.Designer.cs">
       <DependentUpon>AgendaView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DagFactory.cs" />
+    <Compile Include="Views\DagPresenter.cs" />
     <Compile Include="Views\DayView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\DayView.Designer.cs">
       <DependentUpon>DayView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\GetDayQuery.cs" />
+    <Compile Include="Views\IDagView.cs" />
     <Compile Include="Views\MdiChild.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +151,9 @@
     <EmbeddedResource Include="Views\DayView.resx">
       <DependentUpon>DayView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\_vak.resx">
+      <DependentUpon>_vak.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -169,7 +168,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Infrastructure\Execute.cs" />
+    <Compile Include="Views\Presenter.cs" />
+    <Compile Include="Views\_vak.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\_vak.Designer.cs">
+      <DependentUpon>_vak.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="hibernate.cfg.xml">
