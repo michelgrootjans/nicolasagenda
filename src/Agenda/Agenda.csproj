@@ -6,7 +6,7 @@
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1E11DBC9-BEDD-4D1D-8D34-D0A864720EC9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Agendas</RootNamespace>
     <AssemblyName>Agenda</AssemblyName>
@@ -81,6 +81,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nhibernate\Required_Bins\NHibernate.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="PdfSharp, Version=1.31.1789.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\PdfSharp\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -101,6 +105,8 @@
   <ItemGroup>
     <Compile Include="Entities\Dag.cs" />
     <Compile Include="Entities\LesUur.cs" />
+    <Compile Include="Events\PrintAgendaPage.cs" />
+    <Compile Include="Events\PrintCurrentViewEvent.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
@@ -108,16 +114,21 @@
     <Compile Include="FluentMappings\LesuurMap.cs" />
     <Compile Include="Infrastructure\ApplicationStartup.cs" />
     <Compile Include="Infrastructure\CriteriaResult.cs" />
+    <Compile Include="Infrastructure\EventAggregator.cs" />
     <Compile Include="Infrastructure\IocContainer.cs" />
-    <Compile Include="Infrastructure\IEvent.cs" />
+    <Compile Include="Infrastructure\IListenTo.cs" />
     <Compile Include="Infrastructure\IQuery.cs" />
     <Compile Include="Infrastructure\IQueryResult.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IRequest.cs" />
     <Compile Include="Infrastructure\Map.cs" />
     <Compile Include="Infrastructure\NHibernateProvider.cs" />
+    <Compile Include="Infrastructure\NhibernateRepository.cs" />
     <Compile Include="Infrastructure\SessionExtensions.cs" />
+    <Compile Include="Infrastructure\TraceLogger.cs" />
     <Compile Include="Migrations\M001_Dag.cs" />
     <Compile Include="Migrations\M002_LesUur.cs" />
+    <Compile Include="Queries\GetDaysBetween.cs" />
     <Compile Include="Requests\GetDayRequest.cs" />
     <Compile Include="Views\AgendaView.cs">
       <SubType>Form</SubType>
@@ -168,6 +179,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Views\PageRange.cs" />
     <Compile Include="Views\Presenter.cs" />
     <Compile Include="Views\_vak.cs">
       <SubType>UserControl</SubType>
@@ -180,6 +192,10 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

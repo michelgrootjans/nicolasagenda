@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Agendas.Entities;
+using Agendas.Events;
+using Agendas.Infrastructure;
 
 namespace Agendas.Views
 {
@@ -53,6 +56,11 @@ namespace Agendas.Views
                     vakken[vak.Uur].SetVak(vak);
             }
             get { return dag; }
+        }
+
+        public bool HasFocus
+        {
+            get { return Equals(MdiParent.ActiveMdiChild); }
         }
     }
 }

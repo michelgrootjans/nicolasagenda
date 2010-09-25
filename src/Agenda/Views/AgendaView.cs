@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using Agendas.Events;
+using Agendas.Infrastructure;
 
 namespace Agendas.Views
 {
@@ -23,6 +25,11 @@ namespace Agendas.Views
         private void dateTimePicker_ValueChanged(object sender, System.EventArgs e)
         {
             Show(new DayView(dateTimePicker.Value));
+        }
+
+        private void btnPrint_Click(object sender, System.EventArgs e)
+        {
+            EventAggregator.Raise(new PrintCurrentViewEvent());
         }
     }
 }
