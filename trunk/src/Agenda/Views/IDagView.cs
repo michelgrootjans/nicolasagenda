@@ -8,5 +8,6 @@ namespace Agendas.Views
         DateTime Date { get; }
         bool HasChanged { get; }
         IDag Dag { set; get; }
+        bool HasFocus { get; }
     }
 }

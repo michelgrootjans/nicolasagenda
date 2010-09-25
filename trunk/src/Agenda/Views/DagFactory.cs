@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Agendas.Entities;
 
 namespace Agendas.Views
@@ -81,6 +82,11 @@ namespace Agendas.Views
             dag.AddVak(5, "NED", "");
             dag.AddVak(6, "NED", "");
             dag.AddVak(7, "FRA", "");
+        }
+
+        public static void Complete(PageRange pageRange, IEnumerable<Dag> dagen)
+        {
+            throw new NotImplementedException();
         }
     }
 }

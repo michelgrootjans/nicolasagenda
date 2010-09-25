@@ -1,4 +1,6 @@
-﻿using NHibernate;
+﻿using System;
+using System.Collections.Generic;
+using NHibernate;
 
 namespace Agendas.Infrastructure
 {
@@ -14,6 +16,11 @@ namespace Agendas.Infrastructure
         public T UniqueResult()
         {
             return criteria.UniqueResult<T>();
+        }
+
+        public IEnumerable<T> List()
+        {
+            return criteria.List<T>();
         }
     }
 }

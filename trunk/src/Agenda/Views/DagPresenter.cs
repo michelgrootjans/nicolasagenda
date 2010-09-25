@@ -1,21 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using Agendas.Entities;
+using Agendas.Events;
 using Agendas.Infrastructure;
+using Agendas.Queries;
 
 namespace Agendas.Views
 {
-    public class DagPresenter : Presenter, IPresenter<DayView>
+    public class DagPresenter : Presenter, IPresenter<DayView>, IListenTo<PrintCurrentViewEvent>
     {
-        private readonly IDagView dagView;
+        private readonly IDagView view;
 
-        public DagPresenter(IDagView dagView)
+        public DagPresenter(IDagView view)
         {
-            this.dagView = dagView;
+            this.view = view;
         }
 
         public void Initialize()
         {
-            dagView.Dag = GetOrCreateDag(dagView.Date);
+            view.Dag = GetOrCreateDag(view.Date);
         }
 
         private IDag GetOrCreateDag(DateTime dateTime)
@@ -27,12 +30,40 @@ namespace Agendas.Views
 
         protected override void SaveIfChanged()
         {
-            if (dagView.HasChanged)
+            if (view.HasChanged)
                 using (var transaction = Session.BeginTransaction())
                 {
-                    Session.SaveOrUpdate(dagView.Dag);
+                    Session.SaveOrUpdate(view.Dag);
                     transaction.Commit();
                 }
         }
+
+        public void HandleEvent(PrintCurrentViewEvent domainEvent)
+        {
+            if (view.HasFocus)
+                ShowCurrentPage(view.Date);
+        }
+
+        private void ShowCurrentPage(DateTime date)
+        {
+            var pageRange = new PageRange(date);
+            var dagen = Session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
+            DagFactory.Complete(pageRange, dagen);
+            var printer = PrinterFactory.CreatePrinterFor(pageRange);
+            printer.Print(dagen);
+        }
+    }
+
+    internal static class PrinterFactory
+    {
+        public static IPagePrinter CreatePrinterFor(IPageRange range)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal interface IPagePrinter
+    {
+        void Print(IEnumerable<Dag> dagen);
     }
 }
