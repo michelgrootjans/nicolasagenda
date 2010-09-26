@@ -179,8 +179,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Views\PageRange.cs" />
+    <Compile Include="Views\PageDayRange.cs" />
     <Compile Include="Views\Presenter.cs" />
+    <Compile Include="Views\PrinterFactory.cs" />
     <Compile Include="Views\_vak.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,10 +193,15 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Agenda pag links blank.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Agenda pag rechts blank.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

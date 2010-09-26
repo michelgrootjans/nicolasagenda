@@ -6,23 +6,20 @@ namespace Agendas.Views
 {
     public abstract class Presenter : IDisposable
     {
-        private ISession session;
+        protected ISession Session { get; private set; }
 
-        protected ISession Session
+        protected Presenter()
         {
-            get
-            {
-                if (session != null) 
-                    return session;
-                return session = NHibernateProvider.CreateSession();
-            }
+            IocContainer.Register(this);
+            Session = NHibernateProvider.CreateSession();
         }
 
         public void Dispose()
         {
+            IocContainer.Unregister(this);
             SaveIfChanged();
-            if(session != null)
-                session.Dispose();
+            if(Session != null)
+                Session.Dispose();
         }
 
         protected abstract void SaveIfChanged();

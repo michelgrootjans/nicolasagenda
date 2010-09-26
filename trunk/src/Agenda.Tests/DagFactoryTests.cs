@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Agendas.Entities;
 using Agendas.Extensions;
@@ -32,7 +33,7 @@ namespace Agenda.Tests
 
         protected override IDag CreateDag()
         {
-             return DagFactory.CreateDag(maandag);
+            return DagFactory.CreateDag(maandag);
         }
 
         [Test]
@@ -84,7 +85,7 @@ namespace Agenda.Tests
 
         protected override IDag CreateDag()
         {
-             return DagFactory.CreateDag(dinsdag);
+            return DagFactory.CreateDag(dinsdag);
         }
 
         [Test]
@@ -136,7 +137,7 @@ namespace Agenda.Tests
 
         protected override IDag CreateDag()
         {
-             return DagFactory.CreateDag(woensdag);
+            return DagFactory.CreateDag(woensdag);
         }
 
         [Test]
@@ -274,4 +275,84 @@ namespace Agenda.Tests
         }
     }
 
+    [TestFixture]
+    public class DagFactory_Complete_Tests
+    {
+        [Test]
+        public void Complete_empty_monday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(20.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(3));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 20.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 21.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 22.September(2010)));
+        }
+
+        [Test]
+        public void Complete_empty_tuesday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(21.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(3));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 20.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 21.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 22.September(2010)));
+        }
+
+        [Test]
+        public void Complete_empty_wednesday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(22.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(3));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 20.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 21.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 22.September(2010)));
+        }
+
+        [Test]
+        public void Complete_empty_thursday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(23.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(2));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 23.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 24.September(2010)));
+        }
+
+        [Test]
+        public void Complete_empty_friday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(24.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(2));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 23.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 24.September(2010)));
+        }
+
+        [Test]
+        public void Complete_empty_saturday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(25.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(2));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 23.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 24.September(2010)));
+        }
+
+        [Test]
+        public void Complete_empty_sunday()
+        {
+            var days = DagFactory.Complete(new PageDayRange(26.September(2010)), new List<Dag>());
+            Assert.That(days.Count(), Is.EqualTo(2));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 23.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 24.September(2010)));
+        }
+
+        [Test]
+        public void Complete_existing_monday()
+        {
+            var monday = new Dag(20.September(2010));
+            var days = DagFactory.Complete(new PageDayRange(20.September(2010)), new List<Dag> {monday});
+            Assert.That(days.Count(), Is.EqualTo(3));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => ReferenceEquals(d, monday)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 21.September(2010)));
+            Assert.That(days, new CollectionItemPredicate<IDag>(d => d.Date == 22.September(2010)));
+        }
+    }
 }

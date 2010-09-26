@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Agendas.Entities;
 
 namespace Agendas.Views
 {
     internal static class DagFactory
     {
+        public static IEnumerable<IDag> Complete(PageDayRange dateDayRange, IEnumerable<Dag> dagen)
+        {
+            foreach (var date in dateDayRange)
+            {
+                yield return dagen.Any(d => d.Date.Equals(date))
+                                 ? dagen.Where(d => d.Date.Equals(date)).First()
+                                 : CreateDag(date);
+            }
+        }
+
         public static IDag CreateDag(DateTime dateTime)
         {
             var dag = new Dag(dateTime);
@@ -23,11 +34,9 @@ namespace Agendas.Views
                 case DayOfWeek.Thursday:
                     PopulateDonderdag(dag);
                     break;
-                case DayOfWeek.Friday:
+                default:
                     PopulateVrijdag(dag);
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
             return dag;
         }
@@ -82,11 +91,6 @@ namespace Agendas.Views
             dag.AddVak(5, "NED", "");
             dag.AddVak(6, "NED", "");
             dag.AddVak(7, "FRA", "");
-        }
-
-        public static void Complete(PageRange pageRange, IEnumerable<Dag> dagen)
-        {
-            throw new NotImplementedException();
         }
     }
 }
