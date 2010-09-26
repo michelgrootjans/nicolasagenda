@@ -46,24 +46,10 @@ namespace Agendas.Views
 
         private void ShowCurrentPage(DateTime date)
         {
-            var pageRange = new PageRange(date);
+            var pageRange = new PageDayRange(date);
             var dagen = Session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
-            DagFactory.Complete(pageRange, dagen);
             var printer = PrinterFactory.CreatePrinterFor(pageRange);
-            printer.Print(dagen);
+            printer.Print(DagFactory.Complete(pageRange, dagen));
         }
-    }
-
-    internal static class PrinterFactory
-    {
-        public static IPagePrinter CreatePrinterFor(IPageRange range)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    internal interface IPagePrinter
-    {
-        void Print(IEnumerable<Dag> dagen);
     }
 }

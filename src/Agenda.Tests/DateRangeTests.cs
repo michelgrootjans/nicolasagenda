@@ -10,7 +10,7 @@ namespace Agenda.Tests
         [Test]
         public void mondayEvent_should_get_monday_to_wednesday()
         {
-            var range = new PageRange(20.September(2010));
+            var range = new PageDayRange(20.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(20.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(22.September(2010)));
         }
@@ -18,7 +18,7 @@ namespace Agenda.Tests
         [Test]
         public void tuesdayEvent_should_get_monday_to_wednesday()
         {
-            var range = new PageRange(21.September(2010));
+            var range = new PageDayRange(21.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(20.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(22.September(2010)));
         }
@@ -26,7 +26,7 @@ namespace Agenda.Tests
         [Test]
         public void wednesdayEvent_should_get_monday_to_wednesday()
         {
-            var range = new PageRange(22.September(2010));
+            var range = new PageDayRange(22.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(20.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(22.September(2010)));
         }
@@ -34,7 +34,7 @@ namespace Agenda.Tests
         [Test]
         public void thursdayEvent_should_get_thursday_to_friday()
         {
-            var range = new PageRange(23.September(2010));
+            var range = new PageDayRange(23.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(23.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(24.September(2010)));
         }
@@ -42,7 +42,7 @@ namespace Agenda.Tests
         [Test]
         public void fridayEvent_should_get_thursday_to_friday()
         {
-            var range = new PageRange(24.September(2010));
+            var range = new PageDayRange(24.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(23.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(24.September(2010)));
         }
@@ -50,7 +50,7 @@ namespace Agenda.Tests
         [Test]
         public void saturdayEvent_should_get_thursday_to_friday()
         {
-            var range = new PageRange(25.September(2010));
+            var range = new PageDayRange(25.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(23.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(24.September(2010)));
         }
@@ -58,7 +58,7 @@ namespace Agenda.Tests
         [Test]
         public void sundayEvent_should_get_thursday_to_friday()
         {
-            var range = new PageRange(26.September(2010));
+            var range = new PageDayRange(26.September(2010));
             Assert.That(range.StartDate, Is.EqualTo(23.September(2010)));
             Assert.That(range.EndDate, Is.EqualTo(24.September(2010)));
         }

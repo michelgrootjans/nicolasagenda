@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Agendas.Views
 {
-    internal interface IPageRange
+    internal interface IPageRange : IEnumerable<DateTime>
     {
     }
 
-    internal class PageRange : IPageRange
+    internal class PageDayRange : IPageRange
     {
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
 
-        public PageRange(DateTime date)
+        public PageDayRange(DateTime date)
         {
             StartDate = FirstDayOf(date);
             EndDate = LastDayFrom(StartDate);
@@ -35,6 +37,21 @@ namespace Agendas.Views
         {
             var dayOfWeek = date.DayOfWeek;
             return dayOfWeek == DayOfWeek.Monday || dayOfWeek == DayOfWeek.Thursday;
+        }
+
+        public IEnumerator<DateTime> GetEnumerator()
+        {
+            var currentDate = StartDate;
+            while (currentDate <= EndDate)
+            {
+                yield return currentDate;
+                currentDate = currentDate.AddDays(1);
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
