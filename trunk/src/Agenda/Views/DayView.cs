@@ -51,7 +51,10 @@ namespace Agendas.Views
         {
             set
             {
+                if(value == null) return;
+                
                 dag = value;
+                Text = dag.Date.ToLongDateString();
                 foreach (var vak in dag.Vakken)
                     vakken[vak.Uur].SetVak(vak);
             }

@@ -8,7 +8,12 @@ namespace Agendas.Views
     {
         public bool HasChanged
         {
-            get { return Equals(originalContent, vak.Inhoud); }
+            get
+            {
+                if(vak == null)
+                    return false;
+                return Equals(originalContent, vak.Inhoud);
+            }
         }
 
         private ILesUur vak;

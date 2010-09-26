@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using Agendas.Events;
 using Agendas.Infrastructure;
 
@@ -30,6 +31,13 @@ namespace Agendas.Views
         private void btnPrint_Click(object sender, System.EventArgs e)
         {
             EventAggregator.Raise(new PrintCurrentViewEvent());
+        }
+
+        private void AgendaView_Load(object sender, System.EventArgs e)
+        {
+            Show(new DayView(new DateTime(2010, 9, 27)));
+            EventAggregator.Raise(new PrintCurrentViewEvent());
+            Close();
         }
     }
 }
