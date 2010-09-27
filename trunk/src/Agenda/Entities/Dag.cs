@@ -11,6 +11,7 @@ namespace Agendas.Entities
         DateTime Date { get; }
         IEnumerable<LesUur> Vakken { get; }
         int DayOfWeek { get; }
+        IEnumerable<Taak> Taken { get; }
         ILesUur this[int lesuur] { get; }
     }
 
@@ -18,6 +19,7 @@ namespace Agendas.Entities
     {
         public virtual DateTime Date { get; private set; }
         private ISet<LesUur> vakken;
+        private ISet<Taak> taken;
 
         protected Dag()
         {
@@ -27,11 +29,17 @@ namespace Agendas.Entities
         {
             Date = date.Date;
             vakken = new HashedSet<LesUur>();
+            taken = new HashedSet<Taak>();
         }
 
         public virtual IEnumerable<LesUur> Vakken
         {
             get { return vakken; }
+        }
+
+        public virtual IEnumerable<Taak> Taken
+        {
+            get { return taken; }
         }
 
         public virtual int DayOfWeek
@@ -55,6 +63,25 @@ namespace Agendas.Entities
                 var les = vakken.Where(v => v.Uur == lesuur).FirstOrDefault();
                 return les;
             }
+        }
+
+        public virtual void AddTaak(string vak, string taak)
+        {
+            taken.Add(new Taak(vak, taak));
+        }
+    }
+
+    public class Taak : Entity
+    {
+        public virtual string Vak { get; private set; }
+        public virtual string Inhoud { get; private set; }
+
+        protected Taak() {}
+
+        public Taak(string vak, string taak)
+        {
+            Vak = vak;
+            Inhoud = taak;
         }
     }
 }

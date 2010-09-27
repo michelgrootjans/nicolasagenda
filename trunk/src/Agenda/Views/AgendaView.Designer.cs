@@ -32,11 +32,13 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnVandaag = new System.Windows.Forms.Button();
+            this.btnNieuweTaak = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnNieuweTaak);
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.dateTimePicker);
             this.panel1.Controls.Add(this.btnVandaag);
@@ -50,7 +52,7 @@
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(12, 109);
+            this.btnPrint.Location = new System.Drawing.Point(12, 217);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(131, 23);
             this.btnPrint.TabIndex = 2;
@@ -78,6 +80,18 @@
             this.btnVandaag.UseVisualStyleBackColor = true;
             this.btnVandaag.Click += new System.EventHandler(this.btnVandaag_Click);
             // 
+            // btnNieuweTaak
+            // 
+            this.btnNieuweTaak.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNieuweTaak.Location = new System.Drawing.Point(12, 98);
+            this.btnNieuweTaak.Name = "btnNieuweTaak";
+            this.btnNieuweTaak.Size = new System.Drawing.Size(131, 23);
+            this.btnNieuweTaak.TabIndex = 3;
+            this.btnNieuweTaak.Text = "Nieuwe Taak ...";
+            this.btnNieuweTaak.UseVisualStyleBackColor = true;
+            this.btnNieuweTaak.Click += new System.EventHandler(this.btnNieuweTaak_Click);
+            // 
             // AgendaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,6 +113,7 @@
         private System.Windows.Forms.Button btnVandaag;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnNieuweTaak;
     }
 }
 

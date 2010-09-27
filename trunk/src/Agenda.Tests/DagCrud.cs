@@ -39,6 +39,22 @@ namespace Agenda.Tests
             Assert.That(lesUur.Inhoud, Is.EqualTo("Vandaag heb ik iets geleerd"));
         }
 
+        [Test]
+        public void add_taak_should_work()
+        {
+            var dag = GetDag();
+            dag.AddTaak("FRA", "Toets verbeteren");
+            FlushAndClear();
+
+            var dagFromDb = session.Query(new GetDayQuery(DateTime.Now))
+                .UniqueResult();
+            Assert.That(dagFromDb.Taken.Count(), Is.EqualTo(1));
+            var taak = dagFromDb.Taken.First();
+            Assert.That(taak.Vak, Is.EqualTo("FRA"));
+            Assert.That(taak.Inhoud, Is.EqualTo("Toets verbeteren"));
+        }
+
+
         private Dag GetDag()
         {
             var criteria = session.CreateCriteria<Dag>()

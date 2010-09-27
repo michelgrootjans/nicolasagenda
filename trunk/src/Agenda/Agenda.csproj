@@ -112,6 +112,7 @@
     <Compile Include="Extensions\IntExtensions.cs" />
     <Compile Include="FluentMappings\DayMap.cs" />
     <Compile Include="FluentMappings\LesuurMap.cs" />
+    <Compile Include="FluentMappings\TaakMap.cs" />
     <Compile Include="Infrastructure\ApplicationStartup.cs" />
     <Compile Include="Infrastructure\CriteriaResult.cs" />
     <Compile Include="Infrastructure\EventAggregator.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Infrastructure\NhibernateRepository.cs" />
     <Compile Include="Infrastructure\SessionExtensions.cs" />
     <Compile Include="Infrastructure\TraceLogger.cs" />
+    <Compile Include="Migrations\M003_Taak.cs" />
     <Compile Include="Migrations\M001_Dag.cs" />
     <Compile Include="Migrations\M002_LesUur.cs" />
     <Compile Include="Queries\GetDaysBetween.cs" />
@@ -146,6 +148,12 @@
     </Compile>
     <Compile Include="Views\GetDayQuery.cs" />
     <Compile Include="Views\IDagView.cs" />
+    <Compile Include="Views\MaakTaakView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MaakTaakView.Designer.cs">
+      <DependentUpon>MaakTaakView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MdiChild.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DayView.resx">
       <DependentUpon>DayView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MaakTaakView.resx">
+      <DependentUpon>MaakTaakView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\_vak.resx">
       <DependentUpon>_vak.cs</DependentUpon>
