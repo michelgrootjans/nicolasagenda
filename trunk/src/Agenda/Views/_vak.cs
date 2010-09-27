@@ -12,7 +12,7 @@ namespace Agendas.Views
             {
                 if(vak == null)
                     return false;
-                return Equals(originalContent, vak.Inhoud);
+                return Equals(originalContent, vak.Inhoud) == false;
             }
         }
 

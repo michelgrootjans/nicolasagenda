@@ -10,6 +10,7 @@ namespace Agendas.Entities
     {
         DateTime Date { get; }
         IEnumerable<LesUur> Vakken { get; }
+        int DayOfWeek { get; }
         ILesUur this[int lesuur] { get; }
     }
 
@@ -31,6 +32,11 @@ namespace Agendas.Entities
         public virtual IEnumerable<LesUur> Vakken
         {
             get { return vakken; }
+        }
+
+        public virtual int DayOfWeek
+        {
+            get { return ((int) Date.DayOfWeek) - 1; }
         }
 
         public virtual void AddVak(int lesuur, string vak, string lesInhoud)

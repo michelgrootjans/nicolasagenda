@@ -179,6 +179,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Views\AgendaPdfPrinter.cs" />
     <Compile Include="Views\PageDayRange.cs" />
     <Compile Include="Views\Presenter.cs" />
     <Compile Include="Views\PrinterFactory.cs" />
