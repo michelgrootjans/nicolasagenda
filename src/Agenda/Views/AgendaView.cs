@@ -12,27 +12,6 @@ namespace Agendas.Views
             InitializeComponent();
         }
 
-        private void btnVandaag_Click(object sender, EventArgs e)
-        {
-            Show(new DayView());
-        }
-
-        private void Show(Form dayView)
-        {
-            dayView.MdiParent = this;
-            dayView.Show();
-        }
-
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            Show(new DayView(dateTimePicker.Value));
-        }
-
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            EventAggregator.Raise(new PrintCurrentViewEvent());
-        }
-
         private void AgendaView_Load(object sender, EventArgs e)
         {
             Show(new DayView());
@@ -41,6 +20,32 @@ namespace Agendas.Views
             //Show(new DayView(new DateTime(2010, 9, 30)));
             //EventAggregator.Raise(new PrintCurrentViewEvent());
             //Close();
+        }
+
+        private void btnVandaag_Click(object sender, EventArgs e)
+        {
+            Show(new DayView());
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            Show(new DayView(dateTimePicker.Value));
+        }
+
+        private void btnNieuweTaak_Click(object sender, EventArgs e)
+        {
+            Show(new MaakTaakView());
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            EventAggregator.Raise(new PrintCurrentViewEvent());
+        }
+
+        private void Show(Form dayView)
+        {
+            dayView.MdiParent = this;
+            dayView.Show();
         }
     }
 }

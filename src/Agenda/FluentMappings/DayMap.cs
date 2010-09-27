@@ -13,6 +13,10 @@ namespace Agendas.FluentMappings
                 .Access.LowerCaseField()
                 .AsSet()
                 .Cascade.AllDeleteOrphan();
+            HasMany(d => d.Taken)
+                .Access.LowerCaseField()
+                .AsSet()
+                .Cascade.AllDeleteOrphan();
         }
     }
 }

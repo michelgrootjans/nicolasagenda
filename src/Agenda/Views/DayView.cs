@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using Agendas.Entities;
-using Agendas.Events;
-using Agendas.Infrastructure;
 
 namespace Agendas.Views
 {
@@ -51,8 +48,8 @@ namespace Agendas.Views
         {
             set
             {
-                if(value == null) return;
-                
+                if (value == null) return;
+
                 dag = value;
                 Text = dag.Date.ToLongDateString();
                 foreach (var vak in dag.Vakken)
