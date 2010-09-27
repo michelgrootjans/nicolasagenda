@@ -56,16 +56,16 @@
             this.txtInhoud.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInhoud.Location = new System.Drawing.Point(12, 65);
+            this.txtInhoud.Location = new System.Drawing.Point(12, 39);
             this.txtInhoud.Multiline = true;
             this.txtInhoud.Name = "txtInhoud";
-            this.txtInhoud.Size = new System.Drawing.Size(298, 90);
+            this.txtInhoud.Size = new System.Drawing.Size(298, 62);
             this.txtInhoud.TabIndex = 2;
             // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(235, 161);
+            this.btnOk.Location = new System.Drawing.Point(235, 107);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 3;
@@ -78,7 +78,7 @@
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 196);
+            this.ClientSize = new System.Drawing.Size(322, 142);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtInhoud);
             this.Controls.Add(this.dateDue);

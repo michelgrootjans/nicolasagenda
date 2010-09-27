@@ -107,6 +107,7 @@
     <Compile Include="Entities\LesUur.cs" />
     <Compile Include="Events\PrintAgendaPage.cs" />
     <Compile Include="Events\PrintCurrentViewEvent.cs" />
+    <Compile Include="Events\TaakHasBeenCreated.cs" />
     <Compile Include="Extensions\ComparableExtensions.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IntExtensions.cs" />
@@ -148,6 +149,7 @@
     </Compile>
     <Compile Include="Views\GetDayQuery.cs" />
     <Compile Include="Views\IDagView.cs" />
+    <Compile Include="Views\MaakTaakPresenter.cs" />
     <Compile Include="Views\MaakTaakView.cs">
       <SubType>Form</SubType>
     </Compile>

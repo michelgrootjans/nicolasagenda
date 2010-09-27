@@ -21,6 +21,7 @@ namespace Agendas.Views
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            presenter.CreateTaak();
         }
 
         public List<string> Vakken
@@ -31,30 +32,34 @@ namespace Agendas.Views
                 vakken.DataSource = value;
             }
         }
+
+        public DateTime DateDue
+        {
+            get { return dateDue.Value; }
+        }
+
+        public string SelectedVak
+        {
+            get { return vakken.SelectedText; }
+        }
+
+        public string Inhoud
+        {
+            get { return txtInhoud.Text; }
+        }
     }
 
     internal interface IMaakTaakPresenter
     {
         void Initilaize();
-    }
-
-    internal class MaakTaakPresenter : IMaakTaakPresenter
-    {
-        private readonly IMaakTaakView view;
-
-        public MaakTaakPresenter(IMaakTaakView view)
-        {
-            this.view = view;
-        }
-
-        public void Initilaize()
-        {
-            view.Vakken = new List<string>{"FRA", "NED"};
-        }
+        void CreateTaak();
     }
 
     internal interface IMaakTaakView
     {
         List<string> Vakken { set; }
+        DateTime DateDue { get; }
+        string SelectedVak { get; }
+        string Inhoud { get; }
     }
 }

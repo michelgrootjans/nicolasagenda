@@ -13,6 +13,7 @@ namespace Agendas.Entities
         int DayOfWeek { get; }
         IEnumerable<Taak> Taken { get; }
         ILesUur this[int lesuur] { get; }
+        void AddTaak(string vak, string inhoud);
     }
 
     public class Dag : Entity, IDag
