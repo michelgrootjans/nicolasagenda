@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectionItemPredicate.cs" />
+    <Compile Include="DagTests.cs" />
     <Compile Include="DateRangeTests.cs" />
     <Compile Include="DagCrud.cs" />
     <Compile Include="DagFactoryTests.cs" />
