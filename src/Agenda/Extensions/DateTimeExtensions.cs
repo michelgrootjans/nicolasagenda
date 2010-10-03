@@ -13,5 +13,10 @@ namespace Agendas.Extensions
         {
             return date.At(hour).AddMinutes(minutes);
         }
+
+        public static bool IsWeekendDay(this DateTime date)
+        {
+            return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
+        }
     }
 }

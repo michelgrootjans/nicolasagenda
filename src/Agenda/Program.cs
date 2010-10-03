@@ -2,20 +2,23 @@
 using System.Windows.Forms;
 using Agendas.Infrastructure;
 using Agendas.Views;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace Agendas
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
+            NHibernateProfiler.Initialize();
+            ApplicationStartup.Run();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            ApplicationStartup.Run();
             Application.Run(new AgendaView());
         }
     }

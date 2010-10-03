@@ -1,8 +1,4 @@
-﻿using System;
-using Agendas.Entities;
-using FluentNHibernate.Cfg;
-using NHibernate;
-using NHibernate.Cfg;
+﻿using NHibernate;
 
 namespace Agendas.Infrastructure
 {

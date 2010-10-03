@@ -92,5 +92,23 @@ namespace Agendas.Views
             dag.AddVak(6, "NED", "");
             dag.AddVak(7, "FRA", "");
         }
+
+        public static IList<string> AlleVakken
+        {
+            get
+            {
+                var dag = new Dag(DateTime.Now);
+                PopulateMaandag(dag);
+                PopulateDinsdag(dag);
+                PopulateWoensdag(dag);
+                PopulateDonderdag(dag);
+                PopulateVrijdag(dag);
+                return dag.Vakken
+                    .Select(v => v.Naam)
+                    .Distinct()
+                    .OrderBy(v => v)
+                    .ToList();
+            }
+        }
     }
 }

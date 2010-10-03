@@ -49,6 +49,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\fluentnhibernate\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\tools\NHibernate.Profiler\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nhibernate\Required_Bins\Iesi.Collections.dll</HintPath>
@@ -105,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Entities\Dag.cs" />
     <Compile Include="Entities\LesUur.cs" />
+    <Compile Include="Entities\Taak.cs" />
     <Compile Include="Events\PrintAgendaPage.cs" />
     <Compile Include="Events\PrintCurrentViewEvent.cs" />
     <Compile Include="Events\TaakHasBeenCreated.cs" />
@@ -128,10 +133,12 @@
     <Compile Include="Infrastructure\NhibernateRepository.cs" />
     <Compile Include="Infrastructure\SessionExtensions.cs" />
     <Compile Include="Infrastructure\TraceLogger.cs" />
+    <Compile Include="Migrations\M004_TaakStatus.cs" />
     <Compile Include="Migrations\M003_Taak.cs" />
     <Compile Include="Migrations\M001_Dag.cs" />
     <Compile Include="Migrations\M002_LesUur.cs" />
     <Compile Include="Queries\GetDaysBetween.cs" />
+    <Compile Include="Queries\GetDueTaken.cs" />
     <Compile Include="Requests\GetDayRequest.cs" />
     <Compile Include="Views\AgendaView.cs">
       <SubType>Form</SubType>
@@ -147,7 +154,7 @@
     <Compile Include="Views\DayView.Designer.cs">
       <DependentUpon>DayView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\GetDayQuery.cs" />
+    <Compile Include="Queries\GetDayQuery.cs" />
     <Compile Include="Views\IDagView.cs" />
     <Compile Include="Views\MaakTaakPresenter.cs" />
     <Compile Include="Views\MaakTaakView.cs">
@@ -175,6 +182,9 @@
     <EmbeddedResource Include="Views\MaakTaakView.resx">
       <DependentUpon>MaakTaakView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\_taakView.resx">
+      <DependentUpon>_taakView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\_vak.resx">
       <DependentUpon>_vak.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +206,24 @@
     <Compile Include="Views\PageDayRange.cs" />
     <Compile Include="Views\Presenter.cs" />
     <Compile Include="Views\PrinterFactory.cs" />
+    <Compile Include="Views\_herhalingView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\_herhalingView.Designer.cs">
+      <DependentUpon>_herhalingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_lesView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\_lesView.Designer.cs">
+      <DependentUpon>_lesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_taakView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\_taakView.Designer.cs">
+      <DependentUpon>_taakView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\_vak.cs">
       <SubType>UserControl</SubType>
     </Compile>

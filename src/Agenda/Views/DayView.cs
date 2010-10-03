@@ -5,11 +5,12 @@ using Agendas.Entities;
 
 namespace Agendas.Views
 {
-    public partial class DayView : MdiChild<DayView>, IDagView
+    public partial class DayView : MdiChild, IDagView
     {
         private readonly IDictionary<int, _vak> vakken = new Dictionary<int, _vak>();
-        public DateTime Date { get; private set; }
+        public DateTime Date { get; set; }
         private IDag dag;
+        private IDagViewPresenter presenter;
 
         public bool HasChanged
         {
@@ -20,11 +21,11 @@ namespace Agendas.Views
         {
         }
 
-        public DayView(DateTime date)
+        public DayView(DateTime dateTime)
         {
             InitializeComponent();
 
-            Date = date.Date;
+            Date = dateTime.Date;
             vakken.Add(1, _vak1);
             vakken.Add(2, _vak2);
             vakken.Add(3, _vak3);
@@ -34,13 +35,10 @@ namespace Agendas.Views
             vakken.Add(7, _vak7);
         }
 
-        protected override IPresenter<DayView> CreatePresenter()
-        {
-            return new DagPresenter(this);
-        }
-
         private void DayView_Load(object sender, EventArgs e)
         {
+            if(DesignMode) return;
+            presenter = new DagPresenter(this);
             presenter.Initialize();
         }
 
@@ -54,13 +52,9 @@ namespace Agendas.Views
                 Text = dag.Date.ToLongDateString();
                 foreach (var vak in dag.Vakken)
                     vakken[vak.Uur].SetVak(vak);
+                _taakView.SetTaken(dag.Taken.Cast<ITaak>());
             }
             get { return dag; }
-        }
-
-        public bool HasFocus
-        {
-            get { return Equals(MdiParent.ActiveMdiChild); }
         }
     }
 }

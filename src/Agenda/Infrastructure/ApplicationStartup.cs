@@ -1,5 +1,4 @@
-﻿using System;
-using Agendas.Entities;
+﻿using Agendas.Entities;
 using Agendas.Migrations;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -23,7 +22,7 @@ namespace Agendas.Infrastructure
 
         private static void InitializeORM()
         {
-            using(new TraceLogger("Initializing ORM"))
+            using (new TraceLogger("Initializing ORM"))
             {
                 var sessionFactory = Fluently.Configure()
                     .Database(SQLiteConfiguration.Standard.UsingFile("agenda.db"))
@@ -41,9 +40,8 @@ namespace Agendas.Infrastructure
                 using (var session = NHibernateProvider.CreateSession())
                 {
                     var migrator = new Migrator.Migrator("SQLite", session.Connection.ConnectionString,
-                                                              typeof (M001_Dag).Assembly);
+                                                         typeof (M001_Dag).Assembly);
                     migrator.Logger = logger;
-                    //migrator.MigrateTo(0);
                     migrator.MigrateToLastVersion();
                 }
             }
@@ -51,7 +49,7 @@ namespace Agendas.Infrastructure
 
         private static void InitializeIoCContainer()
         {
-            var repository = new NhibernateRepository();
+            //var repository = new NhibernateRepository();
         }
     }
 }

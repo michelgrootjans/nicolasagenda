@@ -14,12 +14,9 @@ namespace Agendas.Views
 
         private void AgendaView_Load(object sender, EventArgs e)
         {
+            if(DesignMode) return;
+
             Show(new DayView());
-            //Show(new DayView(new DateTime(2010, 9, 27)));
-            //EventAggregator.Raise(new PrintCurrentViewEvent());
-            //Show(new DayView(new DateTime(2010, 9, 30)));
-            //EventAggregator.Raise(new PrintCurrentViewEvent());
-            //Close();
         }
 
         private void btnVandaag_Click(object sender, EventArgs e)
@@ -30,11 +27,6 @@ namespace Agendas.Views
         private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             Show(new DayView(dateTimePicker.Value));
-        }
-
-        private void btnNieuweTaak_Click(object sender, EventArgs e)
-        {
-            Show(new MaakTaakView());
         }
 
         private void btnPrint_Click(object sender, EventArgs e)

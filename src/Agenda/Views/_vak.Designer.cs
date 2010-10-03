@@ -42,7 +42,6 @@
             this.lblNaam.TabIndex = 0;
             this.lblNaam.Text = "vak";
             this.lblNaam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblNaam.Visible = false;
             // 
             // txtContent
             // 
@@ -55,7 +54,6 @@
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(324, 56);
             this.txtContent.TabIndex = 1;
-            this.txtContent.Visible = false;
             this.txtContent.TextChanged += new System.EventHandler(this.txtContent_TextChanged);
             // 
             // _vak
@@ -66,6 +64,7 @@
             this.Controls.Add(this.lblNaam);
             this.Name = "_vak";
             this.Size = new System.Drawing.Size(423, 56);
+            this.Load += new System.EventHandler(this._vak_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

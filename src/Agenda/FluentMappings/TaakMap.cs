@@ -10,6 +10,7 @@ namespace Agendas.FluentMappings
             Id(d => d.Id);
             Map(d => d.Vak);
             Map(d => d.Inhoud);
+            Map(d => d.IsAf);
         }
     }
 }
