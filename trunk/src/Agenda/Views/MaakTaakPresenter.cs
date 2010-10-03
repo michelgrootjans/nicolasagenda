@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Agendas.Events;
+﻿using Agendas.Events;
 using Agendas.Infrastructure;
+using Agendas.Queries;
 
 namespace Agendas.Views
 {
@@ -15,7 +15,7 @@ namespace Agendas.Views
 
         public void Initilaize()
         {
-            view.Vakken = new List<string>{"FRA", "NED"};
+            view.Vakken = DagFactory.AlleVakken;
         }
 
         public void CreateTaak()
@@ -23,8 +23,12 @@ namespace Agendas.Views
             using(var session = NHibernateProvider.CreateSession())
             using(var transaction = session.BeginTransaction())
             {
-                var dag = session.Query(new GetDayQuery(view.DateDue)).UniqueResult() ??
-                          DagFactory.CreateDag(view.DateDue);
+                var dag = session.Query(new GetDayQuery(view.DateDue)).UniqueResult();
+                if (dag == null)
+                {
+                    dag = DagFactory.CreateDag(view.DateDue);
+                    session.Save(dag);
+                }
                 dag.AddTaak(view.SelectedVak, view.Inhoud);
                 transaction.Commit();
             }

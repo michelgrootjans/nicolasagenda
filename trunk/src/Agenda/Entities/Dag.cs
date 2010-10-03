@@ -71,18 +71,4 @@ namespace Agendas.Entities
             taken.Add(new Taak(vak, taak));
         }
     }
-
-    public class Taak : Entity
-    {
-        public virtual string Vak { get; private set; }
-        public virtual string Inhoud { get; private set; }
-
-        protected Taak() {}
-
-        public Taak(string vak, string taak)
-        {
-            Vak = vak;
-            Inhoud = taak;
-        }
-    }
 }

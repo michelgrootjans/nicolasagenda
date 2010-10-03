@@ -5,7 +5,7 @@ namespace Agendas.Views
 {
     public interface IDagView
     {
-        DateTime Date { get; }
+        DateTime Date { get; set; }
         bool HasChanged { get; }
         IDag Dag { set; get; }
         bool HasFocus { get; }

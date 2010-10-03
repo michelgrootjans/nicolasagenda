@@ -9,14 +9,18 @@ namespace Agendas.FluentMappings
         {
             Id(d => d.Id);
             Map(d => d.Date);
+            
             HasMany(d => d.Vakken)
                 .Access.LowerCaseField()
                 .AsSet()
-                .Cascade.AllDeleteOrphan();
+                .Cascade.AllDeleteOrphan()
+                .Fetch.Join();
+
             HasMany(d => d.Taken)
                 .Access.LowerCaseField()
                 .AsSet()
-                .Cascade.AllDeleteOrphan();
+                .Cascade.AllDeleteOrphan()
+                .Fetch.Join();
         }
     }
 }

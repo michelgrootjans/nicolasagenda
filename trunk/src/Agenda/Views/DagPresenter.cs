@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using Agendas.Entities;
 using Agendas.Events;
+using Agendas.Extensions;
 using Agendas.Infrastructure;
 using Agendas.Queries;
 
 namespace Agendas.Views
 {
-    public class DagPresenter : Presenter, IPresenter<DayView>, IListenTo<PrintCurrentViewEvent>
+    public class DagPresenter : Presenter, IDagViewPresenter, IListenTo<PrintCurrentViewEvent>
     {
         private readonly IDagView view;
 
         public DagPresenter(IDagView view)
         {
             this.view = view;
+            view.Date = MoveToNextWorkday(view.Date);
         }
 
         public void Initialize()
@@ -23,19 +24,23 @@ namespace Agendas.Views
 
         private IDag GetOrCreateDag(DateTime dateTime)
         {
-            var dag = Session.Query(new GetDayQuery(dateTime)).UniqueResult()
-                      ?? DagFactory.CreateDag(dateTime);
-            return dag;
+            using (var session = NHibernateProvider.CreateSession())
+            {
+                return session.Query(new GetDayQuery(dateTime)).UniqueResult()
+                       ?? DagFactory.CreateDag(dateTime);
+            }
         }
 
-        protected override void SaveIfChanged()
+        protected void SaveIfChanged()
         {
-            if (view.HasChanged)
-                using (var transaction = Session.BeginTransaction())
-                {
-                    Session.SaveOrUpdate(view.Dag);
-                    transaction.Commit();
-                }
+            if (view.HasChanged == false) return;
+
+            using (var session = NHibernateProvider.CreateSession())
+            using (var transaction = session.BeginTransaction())
+            {
+                session.SaveOrUpdate(view.Dag);
+                transaction.Commit();
+            }
         }
 
         public void HandleEvent(PrintCurrentViewEvent domainEvent)
@@ -44,12 +49,33 @@ namespace Agendas.Views
                 ShowCurrentPage(view.Date);
         }
 
+        public override void Dispose()
+        {
+            SaveIfChanged();
+            base.Dispose();
+        }
+
         private void ShowCurrentPage(DateTime date)
         {
-            var pageRange = new PageDayRange(date);
-            var dagen = Session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
-            var printer = PrinterFactory.CreatePrinterFor(pageRange);
-            printer.Print(DagFactory.Complete(pageRange, dagen));
+            using (var session = NHibernateProvider.CreateSession())
+            {
+                var pageRange = new PageDayRange(date);
+                var dagen = session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
+                var printer = PrinterFactory.CreatePrinterFor(pageRange);
+                printer.Print(DagFactory.Complete(pageRange, dagen));
+            }
         }
+
+        private DateTime MoveToNextWorkday(DateTime date)
+        {
+            while (date.IsWeekendDay())
+                date = date.AddDays(1);
+            return date;
+        }
+    }
+
+    public interface IDagViewPresenter
+    {
+        void Initialize();
     }
 }

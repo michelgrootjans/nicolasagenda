@@ -1,6 +1,6 @@
 ﻿namespace Agendas.Events
 {
-    internal class TaakHasBeenCreated
+    public class TaakHasBeenCreated
     {
     }
 }

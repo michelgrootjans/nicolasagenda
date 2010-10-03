@@ -38,5 +38,12 @@ namespace Agendas.Views
         {
             vak.Inhoud = txtContent.Text;
         }
+
+        private void _vak_Load(object sender, EventArgs e)
+        {
+            if(DesignMode) return;
+            lblNaam.Visible = false;
+            txtContent.Visible = false;
+        }
     }
 }

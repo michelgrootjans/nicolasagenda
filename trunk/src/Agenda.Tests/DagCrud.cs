@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Agendas.Entities;
-using Agendas.Views;
+using Agendas.Queries;
 using NHibernate.Criterion;
 using NUnit.Framework;
 using Agendas.Infrastructure;
@@ -53,7 +53,6 @@ namespace Agenda.Tests
             Assert.That(taak.Vak, Is.EqualTo("FRA"));
             Assert.That(taak.Inhoud, Is.EqualTo("Toets verbeteren"));
         }
-
 
         private Dag GetDag()
         {

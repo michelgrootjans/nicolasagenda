@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Agendas.Views
@@ -15,6 +16,7 @@ namespace Agendas.Views
 
         private void MaakTaakView_Load(object sender, EventArgs e)
         {
+            if(DesignMode) return;
             presenter = new MaakTaakPresenter(this);
             presenter.Initilaize();
         }
@@ -22,9 +24,10 @@ namespace Agendas.Views
         private void btnOk_Click(object sender, EventArgs e)
         {
             presenter.CreateTaak();
+            Close();
         }
 
-        public List<string> Vakken
+        public IList<string> Vakken
         {
             set
             {
@@ -40,7 +43,7 @@ namespace Agendas.Views
 
         public string SelectedVak
         {
-            get { return vakken.SelectedText; }
+            get { return vakken.SelectedItem.ToString(); }
         }
 
         public string Inhoud
@@ -57,7 +60,7 @@ namespace Agendas.Views
 
     internal interface IMaakTaakView
     {
-        List<string> Vakken { set; }
+        IList<string> Vakken { set; }
         DateTime DateDue { get; }
         string SelectedVak { get; }
         string Inhoud { get; }

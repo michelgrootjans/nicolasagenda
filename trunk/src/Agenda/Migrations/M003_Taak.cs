@@ -1,3 +1,4 @@
+using System;
 using System.Data;
 using Migrator.Framework;
 
@@ -6,11 +7,11 @@ namespace Agendas.Migrations
     [Migration(003)]
     public class M003_Taak : Migration
     {
-        private const string tableName = "Taak";
+        public const string TableName = "Taak";
 
         public override void Up()
         {
-            Database.AddTable(tableName,
+            Database.AddTable(TableName,
                               new Column("Id", DbType.Int64, ColumnProperty.PrimaryKeyWithIdentity),
                               new Column("Dag_Id", DbType.Int32, ColumnProperty.ForeignKey),
                               new Column("Vak", DbType.String, ColumnProperty.None),
@@ -20,7 +21,7 @@ namespace Agendas.Migrations
 
         public override void Down()
         {
-            Database.RemoveTable(tableName);
+            Database.RemoveTable(TableName);
         }
     }
 }
