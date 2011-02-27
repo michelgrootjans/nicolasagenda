@@ -112,6 +112,7 @@
     <Compile Include="GetDueTakenTests.cs" />
     <Compile Include="InMemoryDataAccessTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeekChunkerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agenda\Agenda.csproj">

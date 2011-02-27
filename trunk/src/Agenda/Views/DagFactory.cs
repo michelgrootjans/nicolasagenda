@@ -11,9 +11,10 @@ namespace Agendas.Views
         {
             foreach (var date in dateDayRange)
             {
-                yield return dagen.Any(d => d.Date.Equals(date))
-                                 ? dagen.Where(d => d.Date.Equals(date)).First()
-                                 : CreateDag(date);
+                if (dagen.Any(d => d.Date.Equals(date))) 
+                    yield return dagen.Where(d => d.Date.Equals(date)).First();
+                else if(date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday) 
+                    yield return CreateDag(date);
             }
         }
 

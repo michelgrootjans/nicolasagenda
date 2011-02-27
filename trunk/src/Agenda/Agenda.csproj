@@ -137,7 +137,7 @@
     <Compile Include="Migrations\M003_Taak.cs" />
     <Compile Include="Migrations\M001_Dag.cs" />
     <Compile Include="Migrations\M002_LesUur.cs" />
-    <Compile Include="Queries\GetDaysBetween.cs" />
+    <Compile Include="Queries\QueryDaysBetween.cs" />
     <Compile Include="Queries\GetDueTaken.cs" />
     <Compile Include="Requests\GetDayRequest.cs" />
     <Compile Include="Views\Printing\AgendaPrinterStrategy.cs" />
@@ -215,6 +215,7 @@
     <Compile Include="Views\Printing\PrinterFactory.cs" />
     <Compile Include="Views\Printing\ThursdayAgendaPdfPrinter.cs" />
     <Compile Include="Views\Printing\ThursdayAgendaPrinterStrategy.cs" />
+    <Compile Include="Views\Printing\WeekChunker.cs" />
     <Compile Include="Views\_herhalingView.cs">
       <SubType>UserControl</SubType>
     </Compile>

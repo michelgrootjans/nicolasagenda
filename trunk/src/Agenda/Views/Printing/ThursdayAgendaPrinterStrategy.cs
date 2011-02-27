@@ -6,7 +6,7 @@ namespace Agendas.Views.Printing
     {
         protected override int GetDagOffset(IDag dag)
         {
-            return 5 + (dag.DayOfWeek - 3)*DistanceBetweenDays;
+            return 5 + (dag.DayNumber - 3)*DistanceBetweenDays;
         }
 
         protected override double XOffset
