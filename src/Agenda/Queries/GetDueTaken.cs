@@ -1,5 +1,4 @@
-﻿using System;
-using Agendas.Entities;
+﻿using Agendas.Entities;
 using Agendas.Infrastructure;
 using NHibernate;
 

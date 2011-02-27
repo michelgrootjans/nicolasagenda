@@ -1,7 +1,6 @@
 using Agendas.Entities;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -22,7 +21,6 @@ namespace Agenda.Tests
         {
             if (sessionFactory == null)
             {
-                NHibernateProfiler.Initialize();
                 configuration = Fluently.Configure()
                     .Database(SQLiteConfiguration.Standard.InMemory)
                     .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Dag>())

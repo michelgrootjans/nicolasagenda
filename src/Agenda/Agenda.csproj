@@ -140,6 +140,7 @@
     <Compile Include="Queries\GetDaysBetween.cs" />
     <Compile Include="Queries\GetDueTaken.cs" />
     <Compile Include="Requests\GetDayRequest.cs" />
+    <Compile Include="Views\Printing\AgendaPrinterStrategy.cs" />
     <Compile Include="Views\AgendaView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +157,8 @@
     </Compile>
     <Compile Include="Queries\GetDayQuery.cs" />
     <Compile Include="Views\IDagView.cs" />
+    <Compile Include="Views\Printing\IPagePrinter.cs" />
+    <Compile Include="Views\Printing\IPagePrinterStrategy.cs" />
     <Compile Include="Views\MaakTaakPresenter.cs" />
     <Compile Include="Views\MaakTaakView.cs">
       <SubType>Form</SubType>
@@ -202,10 +205,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Views\AgendaPdfPrinter.cs" />
+    <Compile Include="Views\Printing\AgendaPdfPrinter.cs" />
+    <Compile Include="Views\Printing\MondayAgendaPdfPrinter.cs" />
+    <Compile Include="Views\Printing\MondayAgendaPrinterStrategy.cs" />
+    <Compile Include="Views\Printing\MonthAgendaPdfPrinter.cs" />
+    <Compile Include="Views\MonthDayRange.cs" />
     <Compile Include="Views\PageDayRange.cs" />
     <Compile Include="Views\Presenter.cs" />
-    <Compile Include="Views\PrinterFactory.cs" />
+    <Compile Include="Views\Printing\PrinterFactory.cs" />
+    <Compile Include="Views\Printing\ThursdayAgendaPdfPrinter.cs" />
+    <Compile Include="Views\Printing\ThursdayAgendaPrinterStrategy.cs" />
     <Compile Include="Views\_herhalingView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -235,11 +244,15 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Templates\Agenda pag links blank.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Agenda pag links blank.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Agenda pag rechts blank.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Templates\Agenda pag rechts blank.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

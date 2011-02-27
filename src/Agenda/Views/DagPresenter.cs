@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
 using Agendas.Entities;
 using Agendas.Events;
 using Agendas.Extensions;
 using Agendas.Infrastructure;
 using Agendas.Queries;
+using Agendas.Views.Printing;
+using PdfSharp.Pdf;
 
 namespace Agendas.Views
 {
-    public class DagPresenter : Presenter, IDagViewPresenter, IListenTo<PrintCurrentViewEvent>
+    public class DagPresenter : Presenter, IDagViewPresenter, IListenTo<PrintCurrentViewEvent>,
+                                IListenTo<PrintCurrentMonthEvent>
     {
         private readonly IDagView view;
 
@@ -49,21 +53,40 @@ namespace Agendas.Views
                 ShowCurrentPage(view.Date);
         }
 
-        public override void Dispose()
+        public void HandleEvent(PrintCurrentMonthEvent domainEvent)
         {
-            SaveIfChanged();
-            base.Dispose();
+            if (view.HasFocus)
+                ShowCurrentMonth(view.Date);
+        }
+
+        private void ShowCurrentMonth(DateTime date)
+        {
+            using (var session = NHibernateProvider.CreateSession())
+            {
+                IPageRange pageRange = new MonthDayRange(date);
+                var dagen = session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
+                var printer = PrinterFactory.CreatePrinterFor(pageRange);
+                var fileName = printer.Print(DagFactory.Complete(pageRange, dagen), new PdfDocument());
+                //Process.Start(fileName);
+            }
         }
 
         private void ShowCurrentPage(DateTime date)
         {
             using (var session = NHibernateProvider.CreateSession())
             {
-                var pageRange = new PageDayRange(date);
+                IPageRange pageRange = new PageDayRange(date);
                 var dagen = session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
                 var printer = PrinterFactory.CreatePrinterFor(pageRange);
-                printer.Print(DagFactory.Complete(pageRange, dagen));
+                var fileName = printer.Print(DagFactory.Complete(pageRange, dagen), new PdfDocument());
+                Process.Start(fileName);
             }
+        }
+
+        public override void Dispose()
+        {
+            SaveIfChanged();
+            base.Dispose();
         }
 
         private DateTime MoveToNextWorkday(DateTime date)
