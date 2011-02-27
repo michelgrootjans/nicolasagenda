@@ -4,18 +4,23 @@ namespace Agendas.Extensions
 {
     public static class ComparableExtensions
     {
-        public static bool IsBetween(this IComparable actual, IComparable lo, IComparable hi)
+        public static bool IsBetween<T>(this T actual, T lo, T hi)
+            where T : IComparable<T>
         {
-            return lo.IsLessOrEqualTo(actual) || actual.IsLessThan(hi);
+            var actualIsMoreThanLo = lo.IsLessOrEqualTo(actual);
+            var actualIsLessThanHi = actual.IsLessOrEqualTo(hi);
+            return actualIsMoreThanLo && actualIsLessThanHi;
         }
 
-        private static bool IsLessOrEqualTo(this IComparable actual, IComparable hi)
+        private static bool IsLessOrEqualTo<T>(this T actual, T hi)
+            where T : IComparable<T>
         {
             var compareTo = actual.CompareTo(hi);
             return compareTo <= 0;
         }
 
-        private static bool IsLessThan(this IComparable actual, IComparable hi)
+        private static bool IsLessThan<T>(this T actual, T hi)
+            where T : IComparable<T>
         {
             var compareTo = actual.CompareTo(hi);
             return compareTo < 0;

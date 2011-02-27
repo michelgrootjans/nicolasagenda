@@ -6,6 +6,8 @@ namespace Agendas.Views
 {
     internal interface IPageRange : IEnumerable<DateTime>
     {
+        DateTime StartDate { get; }
+        DateTime EndDate { get; }
     }
 
     internal class PageDayRange : IPageRange

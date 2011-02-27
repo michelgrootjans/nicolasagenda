@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnPrintMaand = new System.Windows.Forms.Button();
+            this.btnPrintWeek = new System.Windows.Forms.Button();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.btnVandaag = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -37,7 +38,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.btnPrintMaand);
+            this.panel1.Controls.Add(this.btnPrintWeek);
             this.panel1.Controls.Add(this.dateTimePicker);
             this.panel1.Controls.Add(this.btnVandaag);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -46,16 +48,27 @@
             this.panel1.Size = new System.Drawing.Size(982, 76);
             this.panel1.TabIndex = 1;
             // 
-            // btnPrint
+            // btnPrintMaand
             // 
-            this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(825, 12);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(145, 23);
-            this.btnPrint.TabIndex = 2;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.btnPrintMaand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrintMaand.Location = new System.Drawing.Point(825, 38);
+            this.btnPrintMaand.Name = "btnPrintMaand";
+            this.btnPrintMaand.Size = new System.Drawing.Size(145, 23);
+            this.btnPrintMaand.TabIndex = 3;
+            this.btnPrintMaand.Text = "Print Maand";
+            this.btnPrintMaand.UseVisualStyleBackColor = true;
+            this.btnPrintMaand.Click += new System.EventHandler(this.btnPrintMaand_Click);
+            // 
+            // btnPrintWeek
+            // 
+            this.btnPrintWeek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPrintWeek.Location = new System.Drawing.Point(825, 12);
+            this.btnPrintWeek.Name = "btnPrintWeek";
+            this.btnPrintWeek.Size = new System.Drawing.Size(145, 23);
+            this.btnPrintWeek.TabIndex = 2;
+            this.btnPrintWeek.Text = "Print Week";
+            this.btnPrintWeek.UseVisualStyleBackColor = true;
+            this.btnPrintWeek.Click += new System.EventHandler(this.btnPrintWeek_Click);
             // 
             // dateTimePicker
             // 
@@ -95,7 +108,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnVandaag;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
-        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnPrintWeek;
+        private System.Windows.Forms.Button btnPrintMaand;
     }
 }
 

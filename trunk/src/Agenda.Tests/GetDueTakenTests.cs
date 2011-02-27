@@ -30,8 +30,8 @@ namespace Agenda.Tests
         [Test]
         public void should_be_able_to_get_dag()
         {
-            var taken = session.Query(new GetDueTaken()).List();
-            Assert.That(taken.First(), Is.EqualTo(2));
+            IEnumerable<Taak> taken = session.Query(new GetDueTaken()).List();
+            Assert.That(taken.First().Vak, Is.EqualTo("FRA"));
         }
     }
 }

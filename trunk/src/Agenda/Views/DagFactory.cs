@@ -7,7 +7,7 @@ namespace Agendas.Views
 {
     internal static class DagFactory
     {
-        public static IEnumerable<IDag> Complete(PageDayRange dateDayRange, IEnumerable<Dag> dagen)
+        public static IEnumerable<IDag> Complete(IPageRange dateDayRange, IEnumerable<Dag> dagen)
         {
             foreach (var date in dateDayRange)
             {

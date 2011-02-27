@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Agendas.Infrastructure;
 using Agendas.Views;
-using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace Agendas
 {
@@ -14,7 +13,6 @@ namespace Agendas
         [STAThread]
         private static void Main()
         {
-            NHibernateProfiler.Initialize();
             ApplicationStartup.Run();
 
             Application.EnableVisualStyles();

@@ -17,6 +17,7 @@ namespace Agendas.Views
             if(DesignMode) return;
 
             Show(new DayView());
+            EventAggregator.Raise(new PrintCurrentViewEvent());
         }
 
         private void btnVandaag_Click(object sender, EventArgs e)
@@ -29,9 +30,14 @@ namespace Agendas.Views
             Show(new DayView(dateTimePicker.Value));
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void btnPrintWeek_Click(object sender, EventArgs e)
         {
             EventAggregator.Raise(new PrintCurrentViewEvent());
+        }
+
+        private void btnPrintMaand_Click(object sender, EventArgs e)
+        {
+            EventAggregator.Raise(new PrintCurrentMonthEvent());
         }
 
         private void Show(Form dayView)
