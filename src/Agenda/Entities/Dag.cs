@@ -10,8 +10,9 @@ namespace Agendas.Entities
     {
         DateTime Date { get; }
         IEnumerable<LesUur> Vakken { get; }
-        int DayOfWeek { get; }
+        int DayNumber { get; }
         IEnumerable<Taak> Taken { get; }
+        DayOfWeek DayOfWeek { get; }
         ILesUur this[int lesuur] { get; }
         void AddTaak(string vak, string inhoud);
     }
@@ -43,7 +44,12 @@ namespace Agendas.Entities
             get { return taken; }
         }
 
-        public virtual int DayOfWeek
+        public virtual DayOfWeek DayOfWeek
+        {
+            get { return Date.DayOfWeek; }
+        }
+
+        public virtual int DayNumber
         {
             get { return ((int) Date.DayOfWeek) - 1; }
         }

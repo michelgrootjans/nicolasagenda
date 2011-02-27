@@ -22,7 +22,7 @@ namespace Agenda.Tests
         [Test]
         public void should_be_able_to_get_all_days_between_september_23_and_25()
         {
-            var days = session.Query(new GetDaysBetween(23.September(2010), 25.September(2010))).List();
+            var days = session.Query(new QueryDaysBetween(23.September(2010), 25.September(2010))).List();
             Assert.That(days.Count(), Is.EqualTo(1));
             Assert.That(days.First(), Is.InstanceOf<Dag>());
             Assert.That(days.First().Date, Is.EqualTo(24.September(2010)));
@@ -31,7 +31,7 @@ namespace Agenda.Tests
         [Test]
         public void should_be_able_to_get_all_days_between_september_20_and_28()
         {
-            var days = session.Query(new GetDaysBetween(20.September(2010), 28.September(2010))).List();
+            var days = session.Query(new QueryDaysBetween(20.September(2010), 28.September(2010))).List();
             Assert.That(days.Count(), Is.EqualTo(5));
             Assert.That(days.First().Date, Is.EqualTo(20.September(2010)));
             Assert.That(days.Last().Date, Is.EqualTo(28.September(2010)));

@@ -17,7 +17,7 @@ namespace Agendas.Views
             if(DesignMode) return;
 
             Show(new DayView());
-            EventAggregator.Raise(new PrintCurrentViewEvent());
+            //EventAggregator.Raise(new PrintCurrentViewEvent());
         }
 
         private void btnVandaag_Click(object sender, EventArgs e)

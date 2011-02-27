@@ -6,12 +6,12 @@ using NHibernate.Criterion;
 
 namespace Agendas.Queries
 {
-    internal class GetDaysBetween : IQuery<Dag>
+    internal class QueryDaysBetween : IQuery<Dag>
     {
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
 
-        public GetDaysBetween(DateTime startDate, DateTime endDate)
+        public QueryDaysBetween(DateTime startDate, DateTime endDate)
         {
             StartDate = startDate;
             EndDate = endDate;

@@ -59,26 +59,31 @@ namespace Agendas.Views
                 ShowCurrentMonth(view.Date);
         }
 
-        private void ShowCurrentMonth(DateTime date)
-        {
-            using (var session = NHibernateProvider.CreateSession())
-            {
-                IPageRange pageRange = new MonthDayRange(date);
-                var dagen = session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
-                var printer = PrinterFactory.CreatePrinterFor(pageRange);
-                var fileName = printer.Print(DagFactory.Complete(pageRange, dagen), new PdfDocument());
-                //Process.Start(fileName);
-            }
-        }
-
         private void ShowCurrentPage(DateTime date)
         {
             using (var session = NHibernateProvider.CreateSession())
             {
-                IPageRange pageRange = new PageDayRange(date);
-                var dagen = session.Query(new GetDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
+                var pageRange = new PageDayRange(date);
+                var alleDagen = session.Query(new QueryDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
+                var pdfDocument = new PdfDocument();
                 var printer = PrinterFactory.CreatePrinterFor(pageRange);
-                var fileName = printer.Print(DagFactory.Complete(pageRange, dagen), new PdfDocument());
+                var fileName = printer.Print(DagFactory.Complete(pageRange, alleDagen), pdfDocument);
+
+                pdfDocument.Save(fileName);
+                Process.Start(fileName);
+            }
+        }
+
+        private void ShowCurrentMonth(DateTime date)
+        {
+            using (var session = NHibernateProvider.CreateSession())
+            {
+                var pageRange = new MonthDayRange(date);
+                var dagen = session.Query(new QueryDaysBetween(pageRange.StartDate, pageRange.EndDate)).List();
+                var printer = PrinterFactory.CreatePrinterFor(pageRange);
+                var pdfDocument = new PdfDocument();
+                var fileName = printer.Print(DagFactory.Complete(pageRange, dagen), pdfDocument);
+                pdfDocument.Save(fileName);
                 Process.Start(fileName);
             }
         }

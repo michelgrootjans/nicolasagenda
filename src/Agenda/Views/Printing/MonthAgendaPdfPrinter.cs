@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agendas.Entities;
 using PdfSharp.Pdf;
 
@@ -8,16 +10,16 @@ namespace Agendas.Views.Printing
     {
         public string Print(IEnumerable<IDag> dagen, PdfDocument pdfDocument)
         {
-            //var pageFactory = new AgendaPageFactory();
-            //foreach (var page in pageFactory)
-            //{
-                
-            //}
-            return null;
-        }
-    }
+            var chunker = new WeekChunker(dagen);
+            foreach (var chunk in chunker)
+            {
+                if (chunk.DayOfWeek == DayOfWeek.Monday)
+                    new MondayAgendaPdfPrinter().Print(chunk.Days, pdfDocument);
+                if (chunk.DayOfWeek == DayOfWeek.Thursday)
+                    new ThursdayAgendaPdfPrinter().Print(chunk.Days, pdfDocument);
+            }
 
-    internal class AgendaPageFactory
-    {
+            return dagen.ToList()[6].Date.ToString("MMMM") + ".pdf";
+        }
     }
 }

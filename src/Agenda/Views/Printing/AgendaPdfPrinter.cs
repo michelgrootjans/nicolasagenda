@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Agendas.Entities;
 using PdfSharp.Drawing;
@@ -25,10 +24,7 @@ namespace Agendas.Views.Printing
             DrawPage(graphics, page);
             //DrawGrid(graphics, page);
             VulDagenIn(graphics, dagen);
-
-            string fileName = dagen.First().Date.ToLongDateString() + ".pdf";
-            pdfDocument.Save(fileName);
-            return fileName;
+            return dagen.First().Date.ToLongDateString() + ".pdf";
         }
 
         private void VulDagenIn(XGraphics graphics, IEnumerable<IDag> dagen)
