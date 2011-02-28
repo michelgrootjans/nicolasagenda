@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Agendas.Entities;
@@ -94,7 +95,7 @@ namespace Agendas.Views
             dag.AddVak(7, "FRA", "");
         }
 
-        public static IList<string> AlleVakken
+        public static IEnumerable AlleVakken
         {
             get
             {
