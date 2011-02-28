@@ -6,13 +6,13 @@ namespace Agendas.Infrastructure
 {
     public static class IocContainer
     {
-        private static readonly IList<object> implementations = new List<object>();
+        private static readonly ICollection<object> implementations = new List<object>();
 
         public static IEnumerable<T> GetImplementationsOf<T>()
         {
-            return from i in implementations
-                   where typeof (T).IsAssignableFrom(i.GetType())
-                   select (T) i;
+            return from implementation in implementations
+                   where typeof (T).IsAssignableFrom(implementation.GetType())
+                   select (T) implementation;
         }
 
         public static T GetImplementationOf<T>()

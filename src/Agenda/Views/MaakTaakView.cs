@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -27,7 +28,7 @@ namespace Agendas.Views
             Close();
         }
 
-        public IList<string> Vakken
+        public IEnumerable Vakken
         {
             set
             {
@@ -60,7 +61,7 @@ namespace Agendas.Views
 
     internal interface IMaakTaakView
     {
-        IList<string> Vakken { set; }
+        IEnumerable Vakken { set; }
         DateTime DateDue { get; }
         string SelectedVak { get; }
         string Inhoud { get; }

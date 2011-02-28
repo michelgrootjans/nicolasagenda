@@ -18,7 +18,7 @@ namespace Agendas.Views.Printing
         {
             dateFont = new XFont("Verdana", 12, XFontStyle.Bold);
             dateBrush = XBrushes.White;
-            vakFont = new XFont("Verdana", 12, XFontStyle.Bold);
+            vakFont = new XFont("Helvetica", 12, XFontStyle.Bold);
             vakBrush = XBrushes.Black;
             lesFont = new XFont("Verdana", 8, XFontStyle.Bold);
             lesBrush = XBrushes.Blue;

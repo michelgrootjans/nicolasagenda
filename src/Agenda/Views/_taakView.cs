@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -25,7 +26,7 @@ namespace Agendas.Views
             presenter.Initialize();
         }
 
-        public IList<ITaak> Taken
+        public IEnumerable Taken
         {
             set
             {
@@ -75,7 +76,7 @@ namespace Agendas.Views
 
     internal interface ITaakView
     {
-        IList<ITaak> Taken { set; }
+        IEnumerable Taken { set; }
     }
 
     internal interface ITaakPresenter
