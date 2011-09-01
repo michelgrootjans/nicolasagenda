@@ -31,7 +31,7 @@ namespace Agendas.Views
             set
             {
                 taken.Items.Clear();
-                foreach (var taak in value)
+                foreach (ITaak taak in value)
                     taken.Items.Add(taak.Beschrijving, taak.IsAf);
             }
         }

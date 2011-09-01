@@ -8,7 +8,7 @@
 
         protected override string GetTemplate()
         {
-            return @"Templates\Agenda pag links blank.gif";
+            return @"Templates\links.gif";
         }
     }
 }

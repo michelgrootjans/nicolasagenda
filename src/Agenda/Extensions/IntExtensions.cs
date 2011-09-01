@@ -9,6 +9,11 @@ namespace Agendas.Extensions
             return TimeSpan.FromHours(uur).Add(TimeSpan.FromMinutes(minuten));
         }
 
+        public static DateTime Januari(this int day, int year)
+        {
+            return new DateTime(year, 1, day);
+        }
+
         public static DateTime Februari(this int day, int year)
         {
             return new DateTime(year, 2, day);
@@ -42,6 +47,21 @@ namespace Agendas.Extensions
         public static DateTime September(this int day, int year)
         {
             return new DateTime(year, 9, day);
+        }
+
+        public static DateTime October(this int day, int year)
+        {
+            return new DateTime(year, 10, day);
+        }
+
+        public static DateTime November(this int day, int year)
+        {
+            return new DateTime(year, 11, day);
+        }
+
+        public static DateTime December(this int day, int year)
+        {
+            return new DateTime(year, 12, day);
         }
     }
 }

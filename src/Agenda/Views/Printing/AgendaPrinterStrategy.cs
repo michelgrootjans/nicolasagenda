@@ -6,7 +6,7 @@ namespace Agendas.Views.Printing
 {
     internal abstract class AgendaPrinterStrategy : IPagePrinterStrategy
     {
-        protected const int DistanceBetweenDays = 289;
+        protected const int DistanceBetweenDays = 280;
         private readonly XFont dateFont;
         private readonly XSolidBrush dateBrush;
         private readonly XFont vakFont;
@@ -17,7 +17,7 @@ namespace Agendas.Views.Printing
         protected AgendaPrinterStrategy()
         {
             dateFont = new XFont("Verdana", 12, XFontStyle.Bold);
-            dateBrush = XBrushes.White;
+            dateBrush = XBrushes.Black;
             vakFont = new XFont("Helvetica", 12, XFontStyle.Bold);
             vakBrush = XBrushes.Black;
             lesFont = new XFont("Verdana", 8, XFontStyle.Bold);
@@ -26,13 +26,13 @@ namespace Agendas.Views.Printing
 
         public void Print(IDag dag, XGraphics graphics)
         {
-            var dagTitel = dag.Date.ToLongDateString();
+            var dagTitel = dag.Date.ToString("d MMMM");
             var dagOffset = GetDagOffset(dag);
-            DrawDate(graphics, dagTitel, 30 + dagOffset);
+            DrawDate(graphics, dagTitel, 32 + dagOffset);
             foreach (var lesUur in dag.Vakken.OrderBy(v => v.Uur))
             {
-                var vakOffset = dagOffset + 33.5*(lesUur.Uur - 1);
-                DrawVak(graphics, lesUur, 55 + vakOffset);
+                var vakOffset = dagOffset + 31*(lesUur.Uur - 1);
+                DrawVak(graphics, lesUur, 58 + vakOffset);
                 DrawLes(graphics, lesUur, 48 + vakOffset);
             }
         }
