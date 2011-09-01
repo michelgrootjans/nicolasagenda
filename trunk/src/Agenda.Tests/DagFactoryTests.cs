@@ -39,43 +39,43 @@ namespace Agenda.Tests
         [Test]
         public void eerste_lesuur_WIS()
         {
-            CheckLesuur(1, "WIS");
+            CheckLesuur(1, "GES");
         }
 
         [Test]
         public void tweede_lesuur_GES()
         {
-            CheckLesuur(2, "GES");
+            CheckLesuur(2, "NED");
         }
 
         [Test]
         public void derde_lesuur_FRA()
         {
-            CheckLesuur(3, "FRA");
+            CheckLesuur(3, "AAR");
         }
 
         [Test]
         public void vierde_lesuur_NED()
         {
-            CheckLesuur(4, "NED");
+            CheckLesuur(4, "ENG");
         }
 
         [Test]
         public void vijfde_lesuur_ENG()
         {
-            CheckLesuur(5, "ENG");
+            CheckLesuur(5, "INF");
         }
 
         [Test]
         public void zesde_lesuur_LO()
         {
-            CheckLesuur(6, "LO");
+            CheckLesuur(6, "GOD");
         }
 
         [Test]
         public void zevende_lesuur_WWK()
         {
-            CheckLesuur(7, "WWK");
+            CheckLesuur(7, "BIO");
         }
     }
 
@@ -91,43 +91,43 @@ namespace Agenda.Tests
         [Test]
         public void eerste_lesuur_WIS()
         {
-            CheckLesuur(1, "WIS");
+            CheckLesuur(1, "LO");
         }
 
         [Test]
         public void tweede_lesuur_GOD()
         {
-            CheckLesuur(2, "GOD");
+            CheckLesuur(2, "FYS");
         }
 
         [Test]
         public void derde_lesuur_FRA()
         {
-            CheckLesuur(3, "FRA");
+            CheckLesuur(3, "WIS");
         }
 
         [Test]
         public void vierde_lesuur_NED()
         {
-            CheckLesuur(4, "NED");
+            CheckLesuur(4, "WIS");
         }
 
         [Test]
         public void vijfde_lesuur_ENG()
         {
-            CheckLesuur(5, "ENG");
+            CheckLesuur(5, "FRA");
         }
 
         [Test]
         public void zesde_lesuur_SEI()
         {
-            CheckLesuur(6, "SEI");
+            CheckLesuur(6, "FRA");
         }
 
         [Test]
         public void zevende_lesuur_MO()
         {
-            CheckLesuur(7, "MO");
+            CheckLesuur(7, "NED");
         }
     }
 
@@ -143,25 +143,25 @@ namespace Agenda.Tests
         [Test]
         public void eerste_lesuur_AAR()
         {
-            CheckLesuur(1, "AAR");
+            CheckLesuur(1, "NED");
         }
 
         [Test]
         public void tweede_lesuur_FRA()
         {
-            CheckLesuur(2, "FRA");
+            CheckLesuur(2, "ENG");
         }
 
         [Test]
         public void derde_lesuur_GES()
         {
-            CheckLesuur(3, "GES");
+            CheckLesuur(3, "CHEM");
         }
 
         [Test]
         public void vierde_lesuur_WIS()
         {
-            CheckLesuur(4, "WIS");
+            CheckLesuur(4, "FRA");
         }
 
         [Test]
@@ -189,7 +189,7 @@ namespace Agenda.Tests
         [Test]
         public void tweede_lesuur_SOAC()
         {
-            CheckLesuur(2, "SOAC");
+            CheckLesuur(2, "NED");
         }
 
         [Test]
@@ -201,25 +201,25 @@ namespace Agenda.Tests
         [Test]
         public void vierde_lesuur_BIO()
         {
-            CheckLesuur(4, "BIO");
+            CheckLesuur(4, "FRA");
         }
 
         [Test]
         public void vijfde_lesuur_WWK()
         {
-            CheckLesuur(5, "WWK");
+            CheckLesuur(5, "INF");
         }
 
         [Test]
         public void zesde_lesuur_WWK()
         {
-            CheckLesuur(6, "WWK");
+            CheckLesuur(6, "WIS");
         }
 
         [Test]
         public void zevende_lesuur_SEI()
         {
-            CheckLesuur(7, "SEI");
+            CheckLesuur(7, "LO");
         }
     }
 
@@ -235,43 +235,43 @@ namespace Agenda.Tests
         [Test]
         public void eerste_lesuur_LO()
         {
-            CheckLesuur(1, "LO");
+            CheckLesuur(1, "ENG");
         }
 
         [Test]
         public void tweede_lesuur_WIS()
         {
-            CheckLesuur(2, "WIS");
+            CheckLesuur(2, "BIO");
         }
 
         [Test]
         public void derde_lesuur_TO()
         {
-            CheckLesuur(3, "TO");
+            CheckLesuur(3, "PO");
         }
 
         [Test]
         public void vierde_lesuur_TO()
         {
-            CheckLesuur(4, "TO");
+            CheckLesuur(4, "WIS");
         }
 
         [Test]
         public void vijfde_lesuur_NED()
         {
-            CheckLesuur(5, "NED");
+            CheckLesuur(5, "FYS");
         }
 
         [Test]
         public void zesde_lesuur_NED()
         {
-            CheckLesuur(6, "NED");
+            CheckLesuur(6, "GES");
         }
 
         [Test]
         public void zevende_lesuur_FRA()
         {
-            CheckLesuur(7, "FRA");
+            CheckLesuur(7, "CHEM");
         }
     }
 

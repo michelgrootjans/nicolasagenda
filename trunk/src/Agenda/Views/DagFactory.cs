@@ -45,54 +45,54 @@ namespace Agendas.Views
 
         private static void PopulateMaandag(Dag dag)
         {
-            dag.AddVak(1, "WIS", "");
-            dag.AddVak(2, "GES", "");
-            dag.AddVak(3, "FRA", "");
-            dag.AddVak(4, "NED", "");
-            dag.AddVak(5, "ENG", "");
-            dag.AddVak(6, "LO", "");
-            dag.AddVak(7, "WWK", "");
+            dag.AddVak(1, "GES", "");
+            dag.AddVak(2, "NED", "");
+            dag.AddVak(3, "AAR", "");
+            dag.AddVak(4, "ENG", "");
+            dag.AddVak(5, "INF", "");
+            dag.AddVak(6, "GOD", "");
+            dag.AddVak(7, "BIO", "");
         }
 
         private static void PopulateDinsdag(Dag dag)
         {
-            dag.AddVak(1, "WIS", "");
-            dag.AddVak(2, "GOD", "");
-            dag.AddVak(3, "FRA", "");
-            dag.AddVak(4, "NED", "");
-            dag.AddVak(5, "ENG", "");
-            dag.AddVak(6, "SEI", "");
-            dag.AddVak(7, "MO", "");
+            dag.AddVak(1, "LO", "");
+            dag.AddVak(2, "FYS", "");
+            dag.AddVak(3, "WIS", "");
+            dag.AddVak(4, "WIS", "");
+            dag.AddVak(5, "FRA", "");
+            dag.AddVak(6, "FRA", "");
+            dag.AddVak(7, "NED", "");
         }
 
         private static void PopulateWoensdag(Dag dag)
         {
-            dag.AddVak(1, "AAR", "");
-            dag.AddVak(2, "FRA", "");
-            dag.AddVak(3, "GES", "");
-            dag.AddVak(4, "WIS", "");
+            dag.AddVak(1, "NED", "");
+            dag.AddVak(2, "ENG", "");
+            dag.AddVak(3, "CHEM", "");
+            dag.AddVak(4, "FRA", "");
         }
 
         private static void PopulateDonderdag(Dag dag)
         {
             dag.AddVak(1, "GOD", "");
-            dag.AddVak(2, "SOAC", "");
+            dag.AddVak(2, "NED", "");
             dag.AddVak(3, "WIS", "");
-            dag.AddVak(4, "BIO", "");
-            dag.AddVak(5, "WWK", "");
-            dag.AddVak(6, "WWK", "");
-            dag.AddVak(7, "SEI", "");
+            dag.AddVak(4, "FRA", "");
+            dag.AddVak(5, "INF", "");
+            dag.AddVak(6, "WIS", "");
+            dag.AddVak(7, "LO", "");
         }
 
         private static void PopulateVrijdag(Dag dag)
         {
-            dag.AddVak(1, "LO", "");
-            dag.AddVak(2, "WIS", "");
-            dag.AddVak(3, "TO", "");
-            dag.AddVak(4, "TO", "");
-            dag.AddVak(5, "NED", "");
-            dag.AddVak(6, "NED", "");
-            dag.AddVak(7, "FRA", "");
+            dag.AddVak(1, "ENG", "");
+            dag.AddVak(2, "BIO", "");
+            dag.AddVak(3, "PO", "");
+            dag.AddVak(4, "WIS", "");
+            dag.AddVak(5, "FYS", "");
+            dag.AddVak(6, "GES", "");
+            dag.AddVak(7, "CHEM", "");
         }
 
         public static IEnumerable AlleVakken

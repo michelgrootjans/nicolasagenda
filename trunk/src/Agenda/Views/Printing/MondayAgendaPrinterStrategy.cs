@@ -4,6 +4,8 @@ namespace Agendas.Views.Printing
 {
     internal class MondayAgendaPrinterStrategy : AgendaPrinterStrategy
     {
+        private const int DagOffset = 85;
+
         protected override int GetDagOffset(IDag dag)
         {
             return dag.DayNumber*DistanceBetweenDays;
@@ -11,7 +13,7 @@ namespace Agendas.Views.Printing
 
         protected override double XOffset
         {
-            get { return 25; }
+            get { return DagOffset; }
         }
     }
 }

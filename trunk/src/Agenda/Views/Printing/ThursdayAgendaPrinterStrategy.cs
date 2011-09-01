@@ -11,7 +11,7 @@ namespace Agendas.Views.Printing
 
         protected override double XOffset
         {
-            get { return 0; }
+            get { return 85; }
         }
     }
 }
